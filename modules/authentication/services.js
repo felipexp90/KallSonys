@@ -43,18 +43,7 @@ angular.module('Authentication')
             };
 
             $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata; // jshint ignore:line
-            $http.defaults.headers.common['User'] = username;
-			$cookieStore.put('globals', $rootScope.globals);
-        };
-		
-		
-		service.ValidateUser = function () {
-            if($http.defaults.headers.common['User'] != undefined){
-				$rootScope.auth = true;
-				$rootScope.username = $http.defaults.headers.common['User'];			
-			}else{
-				$rootScope.auth = false;
-			}
+            $cookieStore.put('globals', $rootScope.globals);
         };
 
         service.ClearCredentials = function () {

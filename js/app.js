@@ -103,30 +103,15 @@ angular.module('myapp')
                 }  
              }); 
 		   }
-    $scope.filterCountry = output;  
+            
+		   
+		   $scope.filterCountry = output;  
       }  
       $scope.fillTextbox = function(string){  
            $scope.country = string;  
            $scope.hidethis = true;  
       }  
  });
- 
- // angular.module('Authentication')
- // .controller("headerController",
- // ['AuthenticationService'
- // function(AuthenticationService){
-	 
-	 // AuthenticationService.ValidateUser();
-	 // // var user = $http.defaults.headers.common['User'];
-			// // console.log("User= ",user);
-			// // if(user != undefined){
-				// // $rootScope.auth = true;
-				// // $rootScope.username = user;			
-			// // }
- // }]);
- 
-
- 
  
  
  // angular.module('myapp')
