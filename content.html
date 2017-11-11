@@ -1,46 +1,27 @@
 	<!--==category boxes==-->
 	<div class="container-Main">
 		<div id="heading-block">
-			<h2>Categorias</h2>		
+			<h2>Campañas</h2>		
 		</div>
-		
-		<div id="content-Items">
-			<!--==1st catbox==-->
-			<a href="#">
+
+		<table id="content-Items" ng-controller="ImagesCampanias">
+			<td ng-repeat="campania in campanias" active="campania.active">
+				<div class="catbox">
+					<a href="{{urlProductos + campania.productId}}">
+						<img style="width: 100%" ng-src="http://laptop-diego:9091{{campania.image}}">
+					</a>
+				</div>
+			</td>
+		</table>
+
+		 <!--==1st catbox==-->
+			<!--a href="#">
 				<div class="catbox">
 					<img src="images/cat1.jpg" alt="Men-fashion">
 					<span>Caballero</span>
 				</div>
 			</a>
-				<!--==2nd catbox==-->
-			<a href="#">
-				<div class="catbox">
-					<img src="images/cat2.jpg" alt="Men-fashion">
-					<span>Caballero</span>
-				</div>
-			</a>
-				<!--==3rd catbox==-->
-			<a href="#">
-				<div class="catbox">
-					<img src="images/cat3.jpg" alt="Men-fashion">
-					<span>Caballero</span>
-				</div>
-			</a>
-				<!--==4th catbox==-->
-			<a href="#">
-				<div class="catbox">
-					<img src="images/cat4.jpg" alt="Men-fashion">
-					<span>Caballero</span>
-				</div>
-			</a>
-				<!--==5th catbox==-->
-			<a href="#">
-				<div class="catbox">
-					<img src="images/cat5.jpg" alt="Men-fashion">
-					<span>Caballero</span>
-				</div>
-			</a>
-		</div>
+	
 		<!--==HEADING OF CATEGORY==-->
 		<div id="heading-block">
 			<h2>Productos</h2>		

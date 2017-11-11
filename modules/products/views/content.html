@@ -19,14 +19,17 @@
 			<div class="prod-box-Main" ng-repeat="producto in productos track by producto.id">
 				<h4 class="title-products">{{producto.descripcion}}</h4>
 				<div class="prod-box" >
-					<a href="{{urlProductos + producto.id}}">
+					
 						<img ng-src="{{productImageSmallBaseUrl + producto.id}}" alt="{{producto.nombre}}">
 						<div class="prod-trans">
-							<div class="prod-feature">
-							 <input type="button" class="btn btn-warning" value="Agregar al carrito">
+							<div class="prod-feature">								
+								 	<a href="{{urlProductos + producto.id}}">
+										 <input type="button" class="btn btn-primary" value="Ver detalle">
+									</a>
+								<input type="button" class="btn btn-warning" value="Agregar al carrito">
 							</div>	
 						</div>
-					</a>
+					
 				</div>
 				<span class="price">$ {{producto.precio}}</span>					
 			</div>

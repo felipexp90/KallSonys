@@ -211,7 +211,7 @@ nav a:hover{
 	transition: all .5s ease;
 }
 .catbox:hover img{
-	transform: scale(1.3,1.3);
+	transform: scale(1.1,1.1);
 	transition: all .5s ease;
 }
 
@@ -270,9 +270,10 @@ nav a:hover{
 	transition: all .5s ease;
 }
 .prod-feature input{
-	width: 150px;
+	width: 180px;
 	height: 35px;
 	font-size: 17px;
+	margin-top: 10px;
 }
 .offer{
 	width: 415px;
@@ -446,8 +447,80 @@ padding-top:10px;
 .price{
 	font-size: 2.25rem; color: red; font-weight: bold
 }
-
-.auth{
-	text-align:right; font-weight:bold;height: 2px;
+.auth{text-align:right; font-weight:bold;height: 2px;}
+/*<< marcela vaquiro; 4/11/2017*/
+.box-product-image {
+	width: 500px;
+	height: 300px;
+	float: left;
+	overflow: hidden;
+	position: relative;
+	margin-left: 120px;
+	margin-bottom: 60px;
+	background: #fff;
+	border: 5px solid #ebf5fb;
 }
+.box-product-detail {
+	width: 600px;
+	height: 300px;
+	float: right;
+	overflow: hidden;
+	position: relative;
+	margin-left: 0px;
+	margin-right: 80px;
+	margin-bottom: 60px;
+	background: #fff;
+	border: 5px solid #ebf5fb;
+}
+.box-image{
+	width: 450px;
+	height: 250px;
+	position: relative;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	margin-top: 40px;
+	text-align: center;
+}
+.box-text{
+	width: 400px;
+	height: 200px;
+	position: relative;
+	margin-left: 50px;
+	margin-right: 40px;
+	margin-bottom: 50px;
+	margin-top: 50px;
+	text-align: left;
+}
+.box-text select{  
+	width: 70px;
+	height: 40px;
+	margin-bottom: 8px;
+	font-size: 18px;
+	text-indent: 15px;
+}
+.img-box-image {
+	width: 200px;
+	height: 200px;
+    float: center;
+}
+.box-gallery{
+	width: 10px;
+	height: 10px;
+    float: left;
+}
+
+.box-gallery ul li{
+	list-style: none;
+	text-align: left;
+}
+.image-extra{  
+	width: 70px;
+	height: 70px;
+	margin-bottom: 8px;
+}
+
+
+
+
 	

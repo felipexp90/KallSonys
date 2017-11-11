@@ -1,12 +1,11 @@
-﻿'use strict';
+'use strict';
 
-angular.module('ContentProducts', ["LocalStorageModule"])
+angular.module('Products', ["LocalStorageModule"])
 .controller("controller_ContentProduct", 
 	['$scope', '$location', '$http', 'localStorageService',
     function ($scope, $location, $http, localStorageService) {
 			var objsURL = $location.search();
 			var productId = objsURL.Id;
-			
 			var URL = ('http://laptop-diego:9091');
 			var productDetailURL = ('http://laptop-diego:9091/api/producto/buscar?id='+productId);
 
@@ -19,7 +18,7 @@ angular.module('ContentProducts', ["LocalStorageModule"])
                 method: 'GET',
                 url: productDetailURL
             }).then(function successCallback(response) {
-					//console.log("Response Success",response);
+					console.log("Response Success",response);
 					$scope.productDetail = response.data;
 					$scope.dataLoading = false;
 
@@ -27,8 +26,7 @@ angular.module('ContentProducts', ["LocalStorageModule"])
 					$scope.productName = (response.data.productos[0].nombre);
 					$scope.productDescription = (response.data.productos[0].descripcion);					
 					$scope.productPrice = (response.data.productos[0].precio);
-					$scope.disponibilidad = (response.data.productos[0].disponibilidad);
-					$scope.productId = productId;
+					$scope.productId = (productId);
 					//console.log("urlImage-producto",URL+response.data.productos[0].urlImage);
 		
 			}, function errorCallback(response) {
@@ -37,8 +35,8 @@ angular.module('ContentProducts', ["LocalStorageModule"])
 				$scope.errorMsj = "No se encontro el producto.";
 				console.log("Response Error",response);
 			});
-
-
+			
+			
 		/*<< LocalStorage*/
 		if(localStorageService.get("Storage-Local-Kallsonys")){
              $scope.todo=localStorageService.get("Storage-Local-Kallsonys");
@@ -58,15 +56,18 @@ angular.module('ContentProducts', ["LocalStorageModule"])
 			$scope.newAct.push(
 				{
 					"productId": $scope.productId,
-					"Cantidad": $scope.cantidad
+					// "productName": $scope.productName,
+					// "productDescription":$scope.productDescription, 
+					// "productPrice":$scope.productPrice,
+					"productCantidad":$scope.productCantidad
 				}
 			);
 			console.log("$scope.newAct", $scope.newAct);
             $scope.todo.push($scope.newAct);
             $scope.newAct={};
-			$scope.message = "Producto Agregado Correctamente al carrito de compras."
-			$scope.addCart = true;
-		 };
+			 
+			 
+         };
 		 
         $scope.clean=function(){
              $scope.todo=[];
@@ -74,7 +75,6 @@ angular.module('ContentProducts', ["LocalStorageModule"])
 		/*LocalStorage >>*/
 
 		}]);
-
 		
 
 

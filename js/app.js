@@ -4,11 +4,12 @@
 angular.module('Authentication', []);
 angular.module('Home', []);
 angular.module('Products', []);
+angular.module('ContentProducts', []);
 angular.module('Cart', []);
 
 angular.module('myapp', [
     'Authentication',
-    'Home', 'Products', 'Cart',
+    'Home', 'Products', 'Cart', 'ContentProducts',
     'ngRoute',
     'ngCookies'
 ])
@@ -67,8 +68,16 @@ angular.module('myapp', [
             $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
 			$http.defaults.headers.common['User'] = $rootScope.globals.currentUser.username; // jshint ignore:line
 		}
-
-        $rootScope.$on('$locationChangeStart', function (event, next, current) {
+		
+		//validate User
+		// if($http.defaults.headers.common['User'] != undefined){
+				// $rootScope.auth = true;
+				// $rootScope.username = $http.defaults.headers.common['User'];			
+			// }else{
+				// $rootScope.auth = false;
+		// }
+        
+		$rootScope.$on('$locationChangeStart', function (event, next, current) {
             // redirect to login page if not logged in
             if ($location.path() !== '/login' && 
 				$location.path() !== '/Recovery' && 

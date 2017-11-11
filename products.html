@@ -23,6 +23,8 @@
 	<script src="modules/products/controller_ContentProduct.js"></script>
     <script src="modules/home/controllers.js"></script>
 	
+	<script src="js/angular-local-storage.min.js"></script>
+	
 	<script type="text/javascript">
    	 function myFunction() {
 		var x = document.getElementById("myTopnav");
@@ -32,6 +34,19 @@
 			x.className = "topnav";
 		}
 	}
+	
+	function ValidateNumber(e){ 
+		var cant_selec = document.getElementById("cantidadVal").value;
+		var cant_disp = document.getElementById("disponibilidad").value;
+		
+		if(parseInt(cant_selec) > parseInt(cant_disp)){
+			document.getElementById('lbltipAddedComment').innerText = 'Excede el limite de unidades disponibles';
+			document.getElementById('cantidadVal').value = '1';
+		} else{
+			document.getElementById('lbltipAddedComment').innerText = '';
+		}
+	}
+	
 	</script>
 </head>
 <body bgcolor= #ebf5fb ng-app="myapp">

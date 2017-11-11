@@ -1,21 +1,45 @@
 <!-- ng-controller="controller_ContentProduct" -->
 <div class="content-info"> 
-		
-			
 		<div>
 			<img ng-if="dataLoading" style="width: 22px;height: 22px; " src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
 			<span ng-if="error">{{errorMsj}}</span>
 		</div>
-		hola
-		<!-- <div id="content-Items"> -->
-			<!-- <!--==1st catbox==--> 
-				<!-- <div  ng-repeat="producto in productos track by producto.id"> -->
-					<!-- <a href="#"> -->
-						<!-- <div class="catbox"> -->
-							<!-- <img ng-src="{{productImageSmallBaseUrl + producto.id}}" alt="{{producto.nombre}}"> -->
-							<!-- <span>{{producto.descripcion}}</span> -->
-						<!-- </div> -->
-					<!-- </a> -->
-				<!-- </div> -->
-		<!-- </div> -->
+
+		<div id="products-details">
+			<div class="box-gallery">
+				<ul>
+					<li><img ng-src="{{productUrlImage}}" class="image-extra"></li>
+					<li><img ng-src="{{productUrlImage}}" class="image-extra"></li>
+					<li><img ng-src="{{productUrlImage}}" class="image-extra"></li>
+					<li><img ng-src="{{productUrlImage}}" class="image-extra"></li>					
+				</ul>
+			</div>			
+			<div class="box-product-image">
+				<div class="box-image">
+					<img ng-src="{{productUrlImage}}" class="img-box-image"> 
+				</div>
+			</div>
+			<div class="box-product-detail">
+				<div class="box-text">
+					<h3>{{productName}} </h3>
+					<h4>{{productDescription}}</h4>
+					<h6>Unidades Disponibles : {{disponibilidad}}</h6>
+					<div class="price">
+						<h3>$ {{productPrice}} </h3>
+					</div>
+						<input type="number" id="cantidadVal" ng-model="cantidad" name="size" min="0" max="{{disponibilidad}}" onkeyup="return ValidateNumber(event)" integer />
+						<input type="hidden" id="disponibilidad" value="{{disponibilidad}}" />
+						<br>
+						<label style="font-size: 10px; color: red;" id="lbltipAddedComment"></label>
+						<br>
+						<input type="button" class="btn btn-warning" value="Agregar al carrito" ng-click="addAct()" />
+					</div>
+				</div>
+			</div>
+			<div ng-show="addCart">
+				<span class="messageSuccess">{{message}}</span>
+				<a href="cart.html#/ContentCart">
+					<img src="images/Loading/shopping-cart.jpg" alt="Cart" style="height: 50px; cursor:pointer;"  />
+				</a>
+			</div>
 </div>

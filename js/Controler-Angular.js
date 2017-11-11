@@ -52,8 +52,45 @@ var app = angular.module("myapp",['ui.bootstrap']);
 				$scope.dataLoading = false;
 				console.log(response);
       });
- });
- 
+
+});
+
+ app.controller("ImagesCampanias",function($scope, $http){
+	$scope.dataLoading = true;
+	$scope.myInterval = 3000;
+	$scope.urlProductos = "http://localhost/KallsonysMovil/products.html#/ContentProducts?Id=";
+	
+	var campaniasArray = [];
+	
+	 $http({
+                method: 'GET',
+                url: 'http://laptop-diego:9091/api/producto/campanias?estado=ACTIVO&categoria=SECUNDARIA'
+            }).then(function successCallback(response) {
+				console.log("response",response);
+				angular.forEach(response.data.campanias, function (value, key)
+					
+					{
+						campaniasArray.push(
+							{
+								"image": value.urlImage,
+								"productId": value.productos[0].id
+								
+							}
+						);
+					});
+					
+					
+					$scope.dataLoading = false;
+					$scope.campanias = campaniasArray;
+
+		      }, function errorCallback(response) {
+				$scope.dataLoading = false;
+				console.log(response);
+      	});
+
+	 });
+
+
   
  
  
