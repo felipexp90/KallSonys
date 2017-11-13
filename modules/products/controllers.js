@@ -1,8 +1,9 @@
 ﻿'use strict';
 
-angular.module('Products')
+angular.module('Products', ["LocalStorageModule"])
 .controller("productsController", 
-	function($scope, $http){
+['$scope', '$http', 'localStorageService',
+	function($scope, $http, localStorageService){
 			var valueCategoria;
 			var productImageSmallBaseUrl = 'http://laptop-diego:9091/api/ImageSmall/';
 			var productImageMediumBaseUrl = 'http://laptop-diego:9091/api/ImageMedium/';
@@ -54,8 +55,39 @@ angular.module('Products')
 				});
 					
 			}
-		};		
-});
+		};
+
+		/*<< LocalStorage*/
+		if(localStorageService.get("Storage-Local-Kallsonys")){
+             $scope.todo=localStorageService.get("Storage-Local-Kallsonys");
+         }else{
+             $scope.todo=[];
+         }
+			
+		//console.log("localStorage:",$scope.todo);
+         $scope.$watchCollection('todo',function(newValue, oldValue){
+             localStorageService.set("Storage-Local-Kallsonys",$scope.todo);
+         });
+		 
+		$scope.addCar=function(idProduct){
+			//console.log("idProduct",idProduct);
+			$scope.newAct = [];
+			$scope.newAct.push(
+				{
+					"productId": idProduct,
+					"Cantidad": 1
+				}
+			);
+			//console.log("$scope.newAct", $scope.newAct);
+            $scope.todo.push($scope.newAct);
+            $scope.newAct={};
+			$scope.message = "Producto Agregado Correctamente al carrito de compras."
+			$scope.addCart = true;
+		 };
+		 /*LocalStorage >>*/
+
+		
+}]);
 
 
 	

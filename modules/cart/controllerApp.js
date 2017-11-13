@@ -20,6 +20,7 @@ try{
          });
 		 
 		if($scope.todo.length > 0){
+				$scope.udpShopTotalPrice=0;
 				$scope.dataLoading  = true;
 				//$scope.todo = [];
 				var product = {};
@@ -171,7 +172,10 @@ try{
 										"precio" : precio,
 										"disponibilidad" : disponibilidad,
 										"urlImage" : urlImage
-								});						
+								});	
+									//console.log("cantidad:",parseInt(value[0].Cantidad)," precio:",precio);
+									$scope.udpShopTotalPrice=$scope.udpShopTotalPrice+(parseInt(value[0].Cantidad) * precio);
+									//console.log("suma:", $scope.udpShopTotalPrice)
 							});
 							
 							//console.log($scope.udpShopContent);
@@ -196,6 +200,7 @@ try{
 		*/
 		$scope.remove = function(id)
 		{
+			$scope.udpShopTotalPrice=0;
 			var products = [];
 			var productsTodo =[];
 			var productValue =0;
@@ -291,7 +296,11 @@ try{
 										"precio" : precio,
 										"disponibilidad" : disponibilidad,
 										"urlImage" : urlImage
-								});						
+								});
+
+								//console.log("cantidad:",parseInt(value[0].Cantidad)," precio:",precio);
+									$scope.udpShopTotalPrice=$scope.udpShopTotalPrice+(parseInt(value[0].Cantidad) * precio);
+								//console.log("suma:", $scope.udpShopTotalPrice)
 							});
 							
 							//console.log($scope.udpShopContent);
@@ -323,7 +332,32 @@ try{
 				// $scope.successMsj="Ha ocurrido un error eliminando el producto, seguramente porqué no existe";
 			// }
 		}
-	
+		
+		$scope.UpdateCant=function(idProduct, cantidad){
+		   //console.log("idProduct",idProduct);
+		   //console.log("cantidad",cantidad);
+		   if(cantidad===null || cantidad===0){
+			   cantidad=1;
+		   }
+		   
+		   for (var i = 0, len = $scope.udpShopContent.length; i < len; i++) {
+			   if(parseInt(idProduct)===parseInt($scope.udpShopContent[i].id)){
+					$scope.udpShopContent[i].cantidad=cantidad;
+				break;   
+			   }   
+			}
+			
+			$scope.udpShopTotalPrice=0;
+			angular.forEach($scope.udpShopContent,function(value, key){
+				//console.log("cantidad:",value.cantidad,"precio:",value.precio);
+				$scope.udpShopTotalPrice=$scope.udpShopTotalPrice+(parseInt(value.cantidad) * value.precio);
+			});
+
+			
+			//console.log("cantidad:",parseInt(value[0].Cantidad)," precio:",precio);
+			
+			//console.log("suma:", $scope.udpShopTotalPrice)
+		}
 		/**
 		* @desc - redondea el precio que le pasemos con dos decimales
 		*/

@@ -46,7 +46,7 @@ angular.module('ContentProducts', ["LocalStorageModule"])
              $scope.todo=[];
          }
 			
-		console.log("localStorage:",$scope.todo);
+		//console.log("localStorage:",$scope.todo);
          $scope.$watchCollection('todo',function(newValue, oldValue){
              localStorageService.set("Storage-Local-Kallsonys",$scope.todo);
          });

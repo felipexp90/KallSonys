@@ -28,9 +28,9 @@
 					<tr ng-repeat="prod in udpShopContent">
 					  <td class="width_th_10">{{prod.id}}</td>
 					  <td class="width_th_30">{{prod.nombre}}</td>
-					  <td class="width_th_10" style="padding-left: 25px;"><input type="number" id="cantidad" value="{{prod.cantidad}}" name="size" min="0" max="50" style="width: 85px;" onkeyup="return ValidateNumber(event)" /></td>
+					  <td class="width_th_10" style="padding-left: 25px;"><input type="number" ng-model="prod.cantidad" id="cantidad" value="{{prod.cantidad}}" name="size" min="0" max="50" style="width: 85px;" ng-change="UpdateCant(prod.id, prod.cantidad)" /></td>
 					  <td class="width_th_20">$ {{prod.precio}}</td>
-					  <td class="width_th_20">$ {{prod.precio*prod.cantidad}}</td>
+					  <td class="width_th_20">$ {{roundCurrency(prod.precio*prod.cantidad)}}</td>
 					  <td class="width_th_10"><a class="button alert" ng-click="remove(prod.id)">X</a></td>
 					</tr>
 					<tr style="border: solid 1px #ddd;">
@@ -40,14 +40,14 @@
 						<td colspan="6"><span style="font-weight: bold;">Subtotal:</span> {{ roundCurrency(udpShopTotalPrice) }}</td>
 					<tr>
 					<tr>
-						<td colspan="6"><span style="font-weight: bold;">IVAL:</span> {{ roundCurrency(udpShopTotalPrice) }}</td>
+						<td colspan="6"><span style="font-weight: bold;">IVA:</span>0.00<!-- {{ roundCurrency(udpShopTotalPrice) }} --></td>
 					<tr>
 					<tr>
 						<td colspan="6"><span style="font-weight: bold;">Total:</span> {{ roundCurrency(udpShopTotalPrice) }}</td>
 					<tr>
-					<tr>
-						<td colspan="6"><span style="font-weight: bold;">Total Items:</span> {{ udpShopTotalProducts }}</td>
-					<tr>
+					<!-- <tr> -->
+						<!-- <td colspan="6"><span style="font-weight: bold;">Total Items:</span> {{ udpShopTotalProducts }}</td> -->
+					<!-- <tr> -->
 					<tr>
 						<td colspan="6">
 							<a style="width:150px;" href="#/pay" ng-disabled="udpShopContent.length < 1" class="button success large-12">
