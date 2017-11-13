@@ -1,79 +1,65 @@
 <!-- ng-controller="controllerCart" -->
 <div class="content-info"> 
-		
-			
 		<div>
 			<img ng-if="dataLoading" style="width: 22px;height: 22px; " src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-			<span ng-if="error">{{errorMsj}}</span>
+			<div ng-if="error">
+				<span class="alert alert-danger">{{errorMsj}}</span>
+				<p>&nbsp;</p>
+			</div>
+			<div ng-if="success">
+				<span class="alert alert-success">{{successMsj}}</span>
+				<p>&nbsp;</p>
+			</div>
 		</div>
 		
-	<div class="row">
-			<div class="large-6 columns">
-				<h3>Tienda con AngularJS y Paypal</h3>
-				<div ng-repeat="productoTienda in productosTienda">
-					<h4>{{productoTienda.name}}</h4>
-					<img ng-src="{{productoTienda.picture}}" width="80" height="80" style="margin-bottom: 10px" />
-					
-					<select ng-init="productoTienda.total=1" ng-model="productoTienda.total">
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-					</select>
-					<a class="button info large-12" ng-click="add(productoTienda)">
-						Precio: {{ productoTienda.price }} Euros
-					</a>	
-					</button>
-				</div>
-			</div>
-
-			<div class="large-6 columns">
-				<table>
+		<div class="large-6 columns" style="width: 100%;">
+				<table style="width: 100%;">
 				  <thead>
 					<tr>
-					  <th>Id</th>
-					  <th>Nombre</th>
-					  <th>Cantidad</th>
-					  <th>Precio unidad</th>
-					  <th>Total producto</th>
-					  <th>Eliminar</th>
+					  <th class="width_th_10">Id</th>
+					  <th class="width_th_30">Nombre</th>
+					  <th class="width_th_10">Cantidad</th>
+					  <th class="width_th_20">Precio unidad</th>
+					  <th class="width_th_20">Total producto</th>
+					  <th class="width_th_10"></th>
 					</tr>
 				  </thead>
 				  <tbody>		  	
 					<tr ng-repeat="prod in udpShopContent">
-					  <td>{{prod.id}}</td>
-					  <td>{{prod.name}}</td>
-					  <td>{{prod.qty}}</td>
-					  <td>{{roundCurrency(prod.price)}}</td>
-					  <td>{{roundCurrency(prod.price * prod.qty)}}</td>
-					  <td><a class="button alert" ng-click="remove(prod.id)">Eliminar</a></td>
+					  <td class="width_th_10">{{prod.id}}</td>
+					  <td class="width_th_30">{{prod.nombre}}</td>
+					  <td class="width_th_10" style="padding-left: 25px;"><input type="number" id="cantidad" value="{{prod.cantidad}}" name="size" min="0" max="50" style="width: 85px;" onkeyup="return ValidateNumber(event)" /></td>
+					  <td class="width_th_20">$ {{prod.precio}}</td>
+					  <td class="width_th_20">$ {{prod.precio*prod.cantidad}}</td>
+					  <td class="width_th_10"><a class="button alert" ng-click="remove(prod.id)">X</a></td>
 					</tr>
-					<tr>
-						<td colspan="6">Subtotal: {{ roundCurrency(udpShopTotalPrice) }}</td>
-					<tr>
-					<tr>
-						<td colspan="6">IVAL: {{ roundCurrency(udpShopTotalPrice) }}</td>
+					<tr style="border: solid 1px #ddd;">
+						<td colspan="6"></td>
 					<tr>
 					<tr>
-						<td colspan="6">Total: {{ roundCurrency(udpShopTotalPrice) }}</td>
+						<td colspan="6"><span style="font-weight: bold;">Subtotal:</span> {{ roundCurrency(udpShopTotalPrice) }}</td>
 					<tr>
 					<tr>
-						<td colspan="6">Número total de artículos: {{ udpShopTotalProducts }}</td>
+						<td colspan="6"><span style="font-weight: bold;">IVAL:</span> {{ roundCurrency(udpShopTotalPrice) }}</td>
+					<tr>
+					<tr>
+						<td colspan="6"><span style="font-weight: bold;">Total:</span> {{ roundCurrency(udpShopTotalPrice) }}</td>
+					<tr>
+					<tr>
+						<td colspan="6"><span style="font-weight: bold;">Total Items:</span> {{ udpShopTotalProducts }}</td>
 					<tr>
 					<tr>
 						<td colspan="6">
-							<a href="#/pay" ng-disabled="udpShopContent.length < 1" class="button success large-12">
+							<a style="width:150px;" href="#/pay" ng-disabled="udpShopContent.length < 1" class="button success large-12">
 								CheckOut
 							</a>
-							<a ng-disabled="udpShopContent.length < 1" class="button alert large-12" ng-click="destroy()">
-								Destroy
-							</a>	
+							<!-- <a ng-disabled="udpShopContent.length < 1" class="button alert large-12" ng-click="destroy()"> -->
+								<!-- Destroy -->
+							<!-- </a>	 -->
 						</td>
 					<tr>	
 				  </tbody>
 				</table>
 			</div>
-	</div>
-		
 </div>
 

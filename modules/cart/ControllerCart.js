@@ -26,7 +26,7 @@ angular.module('Cart')
 			{
 				if(!product.qty || !product.price || !product.id)
 				{
-					throw new Error("Los campos qty, price y id son necesarios");
+					throw new Error("Los campos Cantidad, Precio unidad y id de algunos items son necesarios");
 				}
 				if(isNaN(product.qty) || isNaN(product.price) || isNaN(product.id))
 				{
@@ -57,33 +57,33 @@ angular.module('Cart')
 			* @param - array con los datos del producto
 			* @return - mixed
 			*/
-			add: function(producto)
-			{
-				try{
-					//comprobamos si el producto cumple los requisitos
-					this.minimRequeriments(producto);
+			// add: function(producto)
+			// {
+				// try{
+					// //comprobamos si el producto cumple los requisitos
+					// this.minimRequeriments(producto);
 
-					//si el producto existe le actualizamos la cantidad
-					if(this.checkExistsProduct(producto,$rootScope.udpShopContent) === true)
-					{
-						$rootScope.udpShopTotalPrice += parseFloat(producto.price * producto.qty,10);
-						$rootScope.udpShopTotalProducts += producto.qty;
-						return {"msg":"updated"};
-					}
-					//en otro caso, lo añadimos al carrito
-					else
-					{
-						$rootScope.udpShopTotalPrice += parseFloat(producto.price * producto.qty,10);
-						$rootScope.udpShopTotalProducts += producto.qty;
-						$rootScope.udpShopContent.push(producto);
-						return {"msg":"insert"};
-					}
-				}
-				catch(error)
-				{
-					alert("Error " + error);
-				}
-			},
+					// //si el producto existe le actualizamos la cantidad
+					// if(this.checkExistsProduct(producto,$rootScope.udpShopContent) === true)
+					// {
+						// $rootScope.udpShopTotalPrice += parseFloat(producto.price * producto.qty,10);
+						// $rootScope.udpShopTotalProducts += producto.qty;
+						// return {"msg":"updated"};
+					// }
+					// //en otro caso, lo añadimos al carrito
+					// else
+					// {
+						// $rootScope.udpShopTotalPrice += parseFloat(producto.price * producto.qty,10);
+						// $rootScope.udpShopTotalProducts += producto.qty;
+						// $rootScope.udpShopContent.push(producto);
+						// return {"msg":"insert"};
+					// }
+				// }
+				// catch(error)
+				// {
+					// alert("Error " + error);
+				// }
+			// },
 			/**
 			* @desc - comprueba si el producto existe en el carrito
 			* @param - product - objecto con los datos del producto a añadir
@@ -131,56 +131,56 @@ angular.module('Cart')
 				{
 					alert("Error " + error);
 				}
-			},
+			}
 			/**
 			* @desc - elimina todo el contenido del carrito, precio total y productos
 			* @return - bool
 			*/
-			destroy: function()
-			{
-				try{
-					$rootScope.udpShopContent = [];
-					$rootScope.udpShopTotalPrice = 0;
-					$rootScope.udpShopTotalProducts = 0;
-				}
-				catch(error)
-				{
-					alert("Error " + error);
-				}
-			}
+			// destroy: function()
+			// {
+				// try{
+					// $rootScope.udpShopContent = [];
+					// $rootScope.udpShopTotalPrice = 0;
+					// $rootScope.udpShopTotalProducts = 0;
+				// }
+				// catch(error)
+				// {
+					// alert("Error " + error);
+				// }
+			// }
 			
 			/**
 			* @desc - prepara el formulario hacía paypal con el contenido del carrito y los datos
 			* que ha establecido el usuario previamente
 			* @param - userData - datos de la tienda para el formulario de paypal
 			*/
-			,dataPayPal: function(userData)
-			{
-				var htmlForm = "";
-				for (var i = 0, len = $rootScope.udpShopContent.length; i < len; i++) 
-				{
-					var product = $rootScope.udpShopContent[i];
-					var currentProduct = i + 1;
-					htmlForm += "<input type='hidden' name='item_number_"+currentProduct+"' value="+product.id+" />";
-					htmlForm += "<input type='hidden' name='item_name_"+currentProduct+"' value='"+product.name+"' />";
-					htmlForm += "<input type='hidden' name='quantity_"+currentProduct+"' value="+product.qty+" />";
-					htmlForm += "<input type='hidden' name='amount_"+currentProduct+"' value="+product.price.toFixed(2)+" />";
-				}
+			// ,dataPayPal: function(userData)
+			// {
+				// var htmlForm = "";
+				// for (var i = 0, len = $rootScope.udpShopContent.length; i < len; i++) 
+				// {
+					// var product = $rootScope.udpShopContent[i];
+					// var currentProduct = i + 1;
+					// htmlForm += "<input type='hidden' name='item_number_"+currentProduct+"' value="+product.id+" />";
+					// htmlForm += "<input type='hidden' name='item_name_"+currentProduct+"' value='"+product.name+"' />";
+					// htmlForm += "<input type='hidden' name='quantity_"+currentProduct+"' value="+product.qty+" />";
+					// htmlForm += "<input type='hidden' name='amount_"+currentProduct+"' value="+product.price.toFixed(2)+" />";
+				// }
 
-				htmlForm += "<input type='hidden' name='cmd' value='"+userData.cmd+"' />";
-				htmlForm += "<input type='hidden' name='upload' value='"+userData.upload+"' />";
-				htmlForm += "<input type='hidden' name='business' value='"+userData.business+"' />";
-				htmlForm += "<input type='hidden' name='cancel_return' value='"+userData.cancelUrl+"' />";
-				htmlForm += "<input type='hidden' name='cbt' value='"+userData.msgReturn+"' />";
-				htmlForm += "<input type='hidden' name='return' value='"+userData.successUrl+"' />";
-				htmlForm += "<input type='hidden' name='rm' value="+userData.rm+ " />";
-				htmlForm += "<input type='hidden' name='lc' value='"+userData.lc+"' />";
-				htmlForm += "<input type='hidden' name='currency_code' value='"+userData.currencyCode+"' />";
-				htmlForm += "<input type='hidden' name='cbt' value='"+userData.cbt+"' />";
-				htmlForm += "<input type='image' src='https://www.paypal.com/es_ES/i/btn/btn_buynow_SM.gif' border='0' name='submit' />";
-				htmlForm += "<img border='0' src='https://www.paypal.com/es_ES/i/scr/pixel.gif' width='1' height='1' />";
+				// htmlForm += "<input type='hidden' name='cmd' value='"+userData.cmd+"' />";
+				// htmlForm += "<input type='hidden' name='upload' value='"+userData.upload+"' />";
+				// htmlForm += "<input type='hidden' name='business' value='"+userData.business+"' />";
+				// htmlForm += "<input type='hidden' name='cancel_return' value='"+userData.cancelUrl+"' />";
+				// htmlForm += "<input type='hidden' name='cbt' value='"+userData.msgReturn+"' />";
+				// htmlForm += "<input type='hidden' name='return' value='"+userData.successUrl+"' />";
+				// htmlForm += "<input type='hidden' name='rm' value="+userData.rm+ " />";
+				// htmlForm += "<input type='hidden' name='lc' value='"+userData.lc+"' />";
+				// htmlForm += "<input type='hidden' name='currency_code' value='"+userData.currencyCode+"' />";
+				// htmlForm += "<input type='hidden' name='cbt' value='"+userData.cbt+"' />";
+				// htmlForm += "<input type='image' src='https://www.paypal.com/es_ES/i/btn/btn_buynow_SM.gif' border='0' name='submit' />";
+				// htmlForm += "<img border='0' src='https://www.paypal.com/es_ES/i/scr/pixel.gif' width='1' height='1' />";
 				
-				$(userData.formClass).html("").append(htmlForm);
-			}
+				// $(userData.formClass).html("").append(htmlForm);
+			// }
 		};
 }])

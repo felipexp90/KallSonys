@@ -52,16 +52,18 @@ angular.module('ContentProducts', ["LocalStorageModule"])
          });
 		 
 		$scope.addAct=function(){
-			console.log(" $scope.todo",$scope.todo);
+			//console.log(" $scope.todo",$scope.todo);
+			if($scope.cantidad===undefined || $scope.cantidad===0){
+					$scope.cantidad=1;
+				}
 			$scope.newAct = [];
-			
 			$scope.newAct.push(
 				{
 					"productId": $scope.productId,
 					"Cantidad": $scope.cantidad
 				}
 			);
-			console.log("$scope.newAct", $scope.newAct);
+			//console.log("$scope.newAct", $scope.newAct);
             $scope.todo.push($scope.newAct);
             $scope.newAct={};
 			$scope.message = "Producto Agregado Correctamente al carrito de compras."
