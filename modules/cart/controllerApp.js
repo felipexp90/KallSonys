@@ -6,9 +6,10 @@ angular.module('Cart', ["LocalStorageModule"])
     function ($scope, $location, $http, ShopService, localStorageService) {
 	
 try{
-		var urlcart = "http://laptop-diego:9091/api/shoppingCart/CC80000644/checkout";
-		
-	/*<< LocalStorage*/
+	
+		// var urlcart = "http://laptop-diego:9091/api/shoppingCart/CC80000644/checkout";
+		var urlcart = "http://laptop-diego:9091/api/shoppingCart/CC80000644/subtotal";	
+		/*<< LocalStorage*/
 		if(localStorageService.get("Storage-Local-Kallsonys")){
              $scope.todo=localStorageService.get("Storage-Local-Kallsonys");
          }else{

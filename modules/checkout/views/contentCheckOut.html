@@ -1,5 +1,6 @@
-<!-- ng-controller="controllerCart" -->
+<!-- ng-controller="ControllerCheckOut" -->
 <div class="content-info"> 
+		<div><h3>CheckOut</h3></div>
 		<div>
 			<img ng-if="dataLoading" style="width: 22px;height: 22px; " src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
 			<div ng-if="error">
@@ -11,7 +12,50 @@
 				<p>&nbsp;</p>
 			</div>
 		</div>
+		<div><h5 style="color: #5dade2;text-align: center;width: 100%; background-color:#F8FAFA">Datos Personales</h5></div>
+				<div class="chekout-div-tittle">Nombres: </div>
+				<div class="chekout-div-content">{{nombres}}</div>
+				<br>
+				<div class="chekout-div-tittle">Apellidos:</div>
+				<div class="chekout-div-content">{{apellidos}}</div>
+				<br>
+				<div class="chekout-div-tittle">Telefono:</div>
+				<div class="chekout-div-content">{{telefono}}</div>
+				<br>
+				<div class="chekout-div-tittle">E-mail:</div>
+				<div class="chekout-div-content">{{correo_e}}</div>
+				<br>
+				<div class="chekout-div-tittle">Direccion:</div>
+				<div class="chekout-div-content">{{calle}}</div>
+				<br>
+				<div class="chekout-div-tittle">Ciudad:</div>
+				<div class="chekout-div-content">{{ciudad}}</div>
+				<br>
+				<div class="chekout-div-tittle">pais:</div>
+				<div class="chekout-div-content">{{pais}}</div>
+				<br>
+		<div><h5 style="color: #5dade2;text-align: center;width: 100%; background-color:#F8FAFA">Medios de Pago</h5></div>
+				<div class="chekout-div-tittle">Numero de Tarjeta:</div>
+				<div class="chekout-div-content"><input type="text" style="width: 290px;" ng-model="creditCard" /></div>
+				<br>
+				<div class="chekout-div-tittle">Tipo de Tarjeta:</div>
+				<div class="chekout-div-content">
+					<select name="singleSelect" ng-model="typeCreditCard" style="width: 290px;">
+						<option value="">--- Seleccione Una Opcion ---</option>
+						<option value="VISA" selected="selected">VISA</option>
+						<option value="MASTERCARD">MASTERCARD</option>
+						<option value="MASTERCARD">AMEX</option>
+						<option value="MASTERCARD">DISCOVER</option>
+						<option value="MASTERCARD">DINERS</option>
+					</select>
+					</div>
+				<br>
 		
+
+
+
+
+		<div><h5 style="color: #5dade2;text-align: center;width: 100%; background-color:#F8FAFA">Datos Productos</h5></div>
 		<div class="large-6 columns" style="width: 100%;">
 				<table style="width: 100%;">
 				  <thead>
@@ -21,17 +65,17 @@
 					  <th class="width_th_10">Cantidad</th>
 					  <th class="width_th_20">Precio unidad</th>
 					  <th class="width_th_20">Total producto</th>
-					  <th class="width_th_10"></th>
+					  <!-- <th class="width_th_10"></th> -->
 					</tr>
 				  </thead>
 				  <tbody>		  	
 					<tr ng-repeat="prod in udpShopContent">
 					  <td class="width_th_10">{{prod.id}}</td>
 					  <td class="width_th_30">{{prod.nombre}}</td>
-					  <td class="width_th_10" style="padding-left: 25px;"><input type="number" ng-model="prod.cantidad" id="cantidad" value="{{prod.cantidad}}" name="size" min="0" max="50" style="width: 85px;" ng-change="UpdateCant(prod.id, prod.cantidad)" /></td>
+					  <td class="width_th_10" style="padding-left: 25px;">{{prod.cantidad}}</td>
 					  <td class="width_th_20">$ {{prod.precio}}</td>
 					  <td class="width_th_20">$ {{roundCurrency(prod.precio*prod.cantidad)}}</td>
-					  <td class="width_th_10"><a class="button alert" ng-click="remove(prod.id)">X</a></td>
+					  <!-- <td class="width_th_10"><a class="button alert" ng-click="remove(prod.id)">X</a></td> -->
 					</tr>
 					<tr style="border: solid 1px #ddd;">
 						<td colspan="6"></td>
@@ -50,8 +94,8 @@
 					<!-- <tr> -->
 					<tr>
 						<td colspan="6">
-							<a style="width:150px;" href="checkout.html#/ContentCheckOut" ng-disabled="udpShopContent.length < 1" class="button success large-12">
-								CheckOut
+							<a style="width:150px;" ng-click="payment()" ng-disabled="udpShopContent.length < 1" class="button success large-12">
+								Pagar
 							</a>
 							<!-- <a ng-disabled="udpShopContent.length < 1" class="button alert large-12" ng-click="destroy()"> -->
 								<!-- Destroy -->
@@ -62,4 +106,3 @@
 				</table>
 			</div>
 </div>
-

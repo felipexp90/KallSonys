@@ -1,0 +1,11 @@
+http://laptop-diego:9091/api/shoppingCart/CC80000644/subtotal
+http://laptop-diego:9091/api/shoppingCart/CC80000644/checkout
+
+http://laptop-diego:9091/api/shoppingCart/CC79987979/procesarpago
+{
+  "numeroTarjeta": "123454",
+  "tipoTarjeta": "VISA",
+  "direccionEntrega": "AVENIDA CALLE PRIMERA CON CARRERA 40",
+  "paisEntrega": "COLOMBIA",
+  "ciudadEntrega": "BOGOTA"
+}

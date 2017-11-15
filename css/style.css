@@ -519,6 +519,12 @@ padding-top:10px;
 	height: 70px;
 	margin-bottom: 8px;
 }
+.chekout-div-tittle{
+	float:left;text-align:center;font-weight:bold;width:200px;	
+}
+.chekout-div-content{
+	text-align:left;;width:500px;font-size: 0.875em;
+}
 
 
 

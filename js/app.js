@@ -6,10 +6,13 @@ angular.module('Home', []);
 angular.module('Products', []);
 angular.module('ContentProducts', []);
 angular.module('Cart', []);
+angular.module('CheckOut', []);
+angular.module('Orders', []);
 
 angular.module('myapp', [
     'Authentication',
-    'Home', 'Products', 'Cart', 'ContentProducts',
+    'Home', 'Products', 'Cart', 'ContentProducts', 'CheckOut',
+	'Orders',
     'ngRoute',
     'ngCookies'
 ])
@@ -52,6 +55,16 @@ angular.module('myapp', [
             templateUrl: 'modules/cart/views/contentCart.html'
         })
 		
+		.when('/ContentCheckOut', {
+            controller: 'ControllerCheckOut',
+            templateUrl: 'modules/checkout/views/contentCheckOut.html'
+        })
+		
+		.when('/ContentOrders', {
+            controller: 'ControllerOrders',
+            templateUrl: 'modules/ordenes/views/contentOrder.html'
+        })
+		
         .when('/', {
             controller: 'HomeController',
             templateUrl: 'modules/home/views/home.html'
@@ -85,7 +98,8 @@ angular.module('myapp', [
 				$location.path() !== '/RestoreAccount' && 
 				$location.path() !== '/Content' && 
 				$location.path() !== '/ContentProducts' && 
-				$location.path() !== '/ContentCart' && 
+				$location.path() !== '/ContentCart' &&
+				$location.path() !== '/ContentCheckOut' &&
 				!$rootScope.globals.currentUser) {
 				
 				$rootScope.auth = false;
