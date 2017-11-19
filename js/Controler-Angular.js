@@ -66,7 +66,7 @@ var app = angular.module("myapp",['ui.bootstrap']);
                 method: 'GET',
                 url: 'http://laptop-diego:9091/api/producto/campanias?estado=ACTIVO&categoria=SECUNDARIA'
             }).then(function successCallback(response) {
-				console.log("response",response);
+			//	console.log("response",response);
 				angular.forEach(response.data.campanias, function (value, key)
 					
 					{
@@ -85,7 +85,7 @@ var app = angular.module("myapp",['ui.bootstrap']);
 
 		      }, function errorCallback(response) {
 				$scope.dataLoading = false;
-				console.log(response);
+			//	console.log(response);
       	});
 
 	 });

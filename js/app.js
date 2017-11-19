@@ -25,6 +25,11 @@ angular.module('myapp', [
             templateUrl: 'modules/authentication/views/login.html'
         })
 
+        .when('/Reset', {
+            controller: 'resetUserController',
+            templateUrl: 'modules/authentication/views/login.html'
+        })
+
 		.when('/Recovery', {
             controller: 'recoveryUserController',
             templateUrl: 'modules/authentication/views/recovery.html'
@@ -76,19 +81,22 @@ angular.module('myapp', [
 .run(['$rootScope', '$location', '$cookieStore', '$http',
     function ($rootScope, $location, $cookieStore, $http) {
         // keep user logged in after page refresh
+        var UserLogged=undefined;
         $rootScope.globals = $cookieStore.get('globals') || {};
         if ($rootScope.globals.currentUser) {
-            $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
-			$http.defaults.headers.common['User'] = $rootScope.globals.currentUser.username; // jshint ignore:line
+            $http.defaults.headers.common.Authorization = undefined;
+            UserLogged = $rootScope.globals.currentUser.username;
+            //$http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
+			//$http.defaults.headers.common['User'] = $rootScope.globals.currentUser.username; // jshint ignore:line
 		}
 		
-		//validate User
-		// if($http.defaults.headers.common['User'] != undefined){
-				// $rootScope.auth = true;
-				// $rootScope.username = $http.defaults.headers.common['User'];			
-			// }else{
-				// $rootScope.auth = false;
-		// }
+        //validate User
+       // console.log("valida User:",$rootScope.globals);
+		if( UserLogged === undefined){
+				$rootScope.globals ={};
+                $cookieStore.remove('globals');
+				$rootScope.auth = false;
+		}
         
 		$rootScope.$on('$locationChangeStart', function (event, next, current) {
             // redirect to login page if not logged in

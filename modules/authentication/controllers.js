@@ -146,4 +146,13 @@ angular.module('Authentication')
 			}
 		//console.log("clave:"+$scope.clave+" - Confirmclave:"+$scope.Confirmclave+" token="+tokenURL);
         };
-    }]);
+	}]);
+	
+	angular.module('Authentication')
+	.controller('resetUserController',
+    ['$scope', '$location', '$rootScope', 'AuthenticationService',
+    function ($scope, $location, $rootScope, AuthenticationService) {
+			
+			AuthenticationService.ClearCredentials();
+			$location.path('/login');
+	 }]);

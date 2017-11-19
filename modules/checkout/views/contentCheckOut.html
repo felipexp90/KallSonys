@@ -26,13 +26,24 @@
 				<div class="chekout-div-content">{{correo_e}}</div>
 				<br>
 				<div class="chekout-div-tittle">Direccion:</div>
-				<div class="chekout-div-content">{{calle}}</div>
-				<br>
-				<div class="chekout-div-tittle">Ciudad:</div>
-				<div class="chekout-div-content">{{ciudad}}</div>
-				<br>
+				<div class="chekout-div-content"><input type="text" style="width: 290px;" ng-model="calle" /></div>
+				
 				<div class="chekout-div-tittle">pais:</div>
-				<div class="chekout-div-content">{{pais}}</div>
+				<div class="chekout-div-content"><select name="paisSelect" ng-model="pais" style="width: 290px;">
+						<option value="" selected="selected">--- Seleccione Una Opcion ---</option>
+						<option value="COLOMBIA" selected="selected">COLOMBIA</option>
+						</select></div>
+						
+				<div class="chekout-div-tittle">Ciudad:</div>
+				<div class="chekout-div-content">
+					<select name="ciudadSelect" ng-model="ciudad" style="width: 290px;">
+						<option value="" selected="selected">--- Seleccione Una Opcion ---</option>
+						<option ng-repeat="valciu in ciudades" value="{{valciu}}">{{valciu}}</option>
+					</select>
+				
+				</div>
+				
+				
 				<br>
 		<div><h5 style="color: #5dade2;text-align: center;width: 100%; background-color:#F8FAFA">Medios de Pago</h5></div>
 				<div class="chekout-div-tittle">Numero de Tarjeta:</div>
