@@ -1,29 +1,39 @@
 var app = angular.module("myapp",['ui.bootstrap']);
 
- app.controller("headercontroller", function($scope){  
-      $scope.countryList = [  
-           "Televisor 32 Pulg - Sony", "Televisor 40 Pulg - Sony", "Televisor 50 Pulg - Lg", "Televisor 50 Pulg - Panasonic"  
-      ];  
-      $scope.complete = function(string){  
-           $scope.hidethis = false;  
-           var output = [];  
-		   if(string != ""){
-				angular.forEach($scope.countryList, function(country){  
-                if(country.toLowerCase().indexOf(string.toLowerCase()) >= 0)  
-                {  
-                     output.push(country);  
-                }  
-             }); 
-		   }
-            
-		   
-		   $scope.filterCountry = output;  
-      }  
-      $scope.fillTextbox = function(string){  
-           $scope.country = string;  
-           $scope.hidethis = true;  
-      }  
- });
+ app.controller("headercontroller", function($scope,$http,$location){  
+		var productList = [];
+		$scope.nombres_elast = [];
+		$scope.producto = "";
+
+		$scope.complete = function(producto){
+		$http({
+        method: 'GET',
+        url: "http://laptop-michael:7076/api/producto/buscar/scroll?page=0&items_per_page=10&nombre="+producto
+        }).then(function successCallback(response) {
+			$scope.nombres_elast = [];
+			console.log("response.data ",response.data.productos);
+			angular.forEach(response.data.productos, function (value, key){
+				$scope.nombres_elast.push(
+				{
+					"id": value.id,
+					"nombre": value.nombre
+				});
+				
+			});
+			
+			console.log("nombres_elast", $scope.nombres_elast);	
+			
+			productList = $scope.nombres_elast;
+			console.log("productList",productList);
+ 		});
+		}
+
+		$scope.seleccionar = function(producto){
+			window.location.href = "http://localhost/KallsonysMovil/products.html#/ContentProducts?Id="+producto.id;
+		}
+
+	});
+
  
  app.controller("SliderPage",function($scope, $http){
 	$scope.dataLoading = true;
@@ -92,5 +102,4 @@ var app = angular.module("myapp",['ui.bootstrap']);
 
 
   
- 
  

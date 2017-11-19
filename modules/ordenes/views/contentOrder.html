@@ -1,3 +1,43 @@
+<!-- ng-controller="ControllerCheckOut" -->
 <div class="content-info"> 
 		<div><h3>Sus Ordenes</h3></div>
+		<div>
+			<img ng-if="dataLoading" style="width: 22px;height: 22px; " src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+			<div ng-if="error">
+				<span class="alert alert-danger">{{errorMsj}}</span>
+				<p>&nbsp;</p>
+			</div>
+			<div ng-if="success">
+				<span class="alert alert-success">{{successMsj}}</span>
+				<p>&nbsp;</p>
+			</div>
+		</div>
+		
+		<div class="large-6 columns" style="width: 100%;">
+				<table style="width: 100%;" style="border: solid 1px #ddd;border-spacing: 0;border-collapse: collapse;">
+				  <thead style="background: #f5f5f5; font-weight: bold;">
+					<tr>
+					  <th class="width_th_10">Id</th>
+					  <th class="width_th_30">Nombre</th>
+					  <th class="width_th_10">Cantidad</th>
+					  <th class="width_th_20">Precio unidad</th>
+					  <th class="width_th_20">Total producto</th>
+					  <!-- <th class="width_th_10"></th> -->
+					</tr>
+				  </thead>
+				  <tbody>		  	
+					<tr ng-repeat="prod in udpShopContent">
+					  <td class="width_th_10">{{prod.id}}</td>
+					  <td class="width_th_30">{{prod.nombre}}</td>
+					  <td class="width_th_10" style="padding-left: 25px;">{{prod.cantidad}}</td>
+					  <td class="width_th_20">$ {{prod.precio}}</td>
+					  <td class="width_th_20">$ {{roundCurrency(prod.precio*prod.cantidad)}}</td>
+					  <!-- <td class="width_th_10"><a class="button alert" ng-click="remove(prod.id)">X</a></td> -->
+					</tr>
+					<tr style="border: solid 1px #ddd;">
+						<td colspan="6"></td>
+					</tr>
+				  </tbody>
+			</table>
+		</div>
 </div>
