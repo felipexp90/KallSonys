@@ -3,11 +3,13 @@
 // Controlador Para Iniciar Sesion
 angular.module('Authentication')
 .controller('usercontroller',
-    ['$scope', '$rootScope', '$location', 'AuthenticationService',
-    function ($scope, $rootScope, $location, AuthenticationService) {
-        // reset login status
+    ['$scope', '$rootScope', '$location', 'AuthenticationService', 'UserServices',
+    function ($scope, $rootScope, $location, AuthenticationService, UserServices) {
+		
+		// reset login status
         AuthenticationService.ClearCredentials();
-
+		UserServices.validateUser();
+		
         $scope.login = function () {
             $scope.dataLoading = true;
             AuthenticationService.Login($scope.username, $scope.password, function (response) {
@@ -150,9 +152,8 @@ angular.module('Authentication')
 	
 	angular.module('Authentication')
 	.controller('resetUserController',
-    ['$scope', '$location', '$rootScope', 'AuthenticationService',
-    function ($scope, $location, $rootScope, AuthenticationService) {
-			
+    ['$scope', '$location', '$rootScope', 'AuthenticationService','UserServices',
+    function ($scope, $location, $rootScope, AuthenticationService, UserServices) {
 			AuthenticationService.ClearCredentials();
-			$location.path('/login');
-	 }]);
+			var result = UserServices.validateUser();
+	}]);

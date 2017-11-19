@@ -91,7 +91,7 @@ angular.module('myapp', [
 		}
 		
         //validate User
-       // console.log("valida User:",$rootScope.globals);
+       //console.log("valida User APP.JS:",$rootScope.globals);
 		if( UserLogged === undefined){
 				$rootScope.globals ={};
                 $cookieStore.remove('globals');
@@ -110,7 +110,8 @@ angular.module('myapp', [
 				$location.path() !== '/ContentCheckOut' &&
 				!$rootScope.globals.currentUser) {
 				
-				$rootScope.auth = false;
+                $rootScope.auth = false;
+                $rootScope.username = undefined;
 				$location.path('/login');
             }
         });

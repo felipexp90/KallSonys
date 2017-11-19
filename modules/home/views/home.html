@@ -1,3 +1,44 @@
-﻿<h1>Home</h1>
-<p>You're logged in!!</p>
-<p><a href="#/Reset">Logout</a></p>
+﻿<div class="content-info">
+        <div>
+                <img ng-if="dataLoading" style="width: 22px;height: 22px; " src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                <div ng-if="error">
+                    <span class="alert alert-danger">{{errorMsj}}</span>
+                    <p>&nbsp;</p>
+                </div>
+                <div ng-if="success">
+                        <span class="alert alert-success">{{successMsj}}</span>
+                        <p>&nbsp;</p>
+                </div>
+        </div> 
+    <div><h3>Perfil</h3></div>
+    <div><h4 style="color: #5dade2;text-align: center;width: 100%; background-color:#F8FAFA">Datos Personales</h4></div>
+    <div>
+            <img src="images/Loading/users_clients.png" alt="Clientes" style="height: 90px;"  />
+    </div>    
+    <br>
+    <div style="padding-bottom: 80px;text-align: center;width: 30%;margin-left: 35%;"> 
+              
+            <div class="tittle_h2 divC1" >Documento:</div>
+                <div class="margin-top divC1">{{documento}}</div >
+            <div class="tittle_h2 divC1 divClear">Nombres:</div>
+                <div class="margin-top divC1">
+                    <input name="txt_nomb" type="text" ng-model="nombres" required/>
+                </div>
+            <div class="tittle_h2 divC1 divClear">Apellidos:</div>
+                <div class="margin-top divC1">
+                    <input name="txt_ape" type="text" ng-model="apellidos" required/>
+                </div>
+            <div class="tittle_h2 divC1 divClear">Telefono:</div>
+                <div class="margin-top divC1">
+                    <input name="telefono" type="text" ng-model="telefono" required/>
+                </div>
+            <div class="tittle_h2 divC1 divClear">E-mail:</div>
+                <div class="margin-top divC1">{{correo_e}}</div>
+            <div class="divClear padding-top">
+                        <button type="button" ng-disabled="$invalid || dataLoading" class="btn btn-danger" ng-click="EditarUser_Click()">Editar</button>
+            </div> 
+        </div>
+</div>
+
+<!--<p><a href="#/Reset">Logout</a></p>-->
+<!--<p><a href="#/Login">Logout</a></p>-->
