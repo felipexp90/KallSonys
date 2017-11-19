@@ -107,7 +107,6 @@ angular.module('myapp', [
 				$location.path() !== '/Content' && 
 				$location.path() !== '/ContentProducts' && 
 				$location.path() !== '/ContentCart' &&
-				$location.path() !== '/ContentCheckOut' &&
 				!$rootScope.globals.currentUser) {
 				
                 $rootScope.auth = false;

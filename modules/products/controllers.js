@@ -2,14 +2,14 @@
 
 angular.module('Products', ["LocalStorageModule"])
 .controller("productsController", 
-['$scope', '$http', 'localStorageService',
-	function($scope, $http, localStorageService){
+['$scope', '$http', 'localStorageService','UserServices',
+	function($scope, $http, localStorageService, UserServices){
 			var valueCategoria;
 			var productImageSmallBaseUrl = 'http://laptop-diego:9091/api/ImageSmall/';
 			var productImageMediumBaseUrl = 'http://laptop-diego:9091/api/ImageMedium/';
 			var productImageLargeBaseUrl = 'http://laptop-diego:9091/api/ImageLarge/';
 			$scope.urlProductos = "http://localhost/KallsonysMovil/products.html#/ContentProducts?Id=";
-			
+			UserServices.validateUser();
 			$scope.dataLoading = true;
 			
 			 $http({

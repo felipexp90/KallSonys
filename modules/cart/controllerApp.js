@@ -2,11 +2,11 @@
 
 angular.module('Cart', ["LocalStorageModule"])
 .controller("controllerCart", 
-	['$scope', '$location', '$http', 'ShopService', 'localStorageService',
-    function ($scope, $location, $http, ShopService, localStorageService) {
+	['$scope', '$location', '$http', 'ShopService', 'localStorageService', 'UserServices',
+    function ($scope, $location, $http, ShopService, localStorageService,UserServices) {
 	
 try{
-	
+		UserServices.validateUserCart();
 		// var urlcart = "http://laptop-diego:9091/api/shoppingCart/CC80000644/checkout";
 		var urlcart = "http://laptop-diego:9091/api/shoppingCart/CC80000644/subtotal";	
 		/*<< LocalStorage*/

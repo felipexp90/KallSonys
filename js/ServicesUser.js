@@ -24,7 +24,24 @@ angular.module('myapp')
                     return false;
                 }
                 
-			}	
+            },
+            
+            validateUserCart: function() 
+			{ 
+                globals= $cookieStore.get('globals') || {};
+                //console.log("globals",globals);
+                //console.log("globals.currentUser",globals.currentUser);
+                if(globals!= undefined && globals.currentUser!= undefined){
+                    $rootScope.auth = true;
+                    $rootScope.usernameCart = globals.currentUser.username;
+                    return true;
+                }else{
+                    $rootScope.auth = false;
+                    $rootScope.usernameCart = undefined;
+                    return false;
+                }
+                
+            }
 			
 		};
 }])
