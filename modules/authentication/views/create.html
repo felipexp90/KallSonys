@@ -1,7 +1,14 @@
 <!-- ng-controller="usersController" -->
 <div class="Login_div"> 
 				<div class="Tittle_div" style="width:100%">Crear Usuario</div>
-				<div class="tittle_h2 divC1">Tipo Documento:</div><div class="margin-top divC1"><input name="tipoDoc" type="text" /></div>
+				<!-- <div class="tittle_h2 divC1">Tipo Documento:</div><div class="margin-top divC1"><input name="tipoDoc" type="text" /></div> -->
+				<div> <SPAN class="tittle_h2">Tipo Documento: </SPAN> 
+					<select name="tipoDoc" ng-model="tipoDoc" style="width: 140px;">
+						<option value="">--- Seleccione ---</option>
+						<option value="CC" selected="selected">CC</option>
+						<option value="NIT">NIT</option>
+						<option value="CE">CE</option>
+				</select></div>
 				<div class="tittle_h2 divC1">Documento:</div><div class="margin-top divC1"><input name="txt_doc" type="text" ng-model="NewPost.documento"/></div>
 				<div class="tittle_h2 divC1">Nombres:</div><div class="margin-top divC1"><input name="txt_nomb" type="text" ng-model="NewPost.nombres"/></div>
 				<div class="tittle_h2 divC1">Apellidos:</div><div class="margin-top divC1"><input name="txt_ape" type="text" ng-model="NewPost.apellidos"/></div>

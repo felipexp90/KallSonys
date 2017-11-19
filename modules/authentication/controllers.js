@@ -92,17 +92,17 @@ angular.module('Authentication')
 					password: $scope.NewPost.password
                 }).then(function successCallBack(data, status, headers, config) {
                             if(data.data.success == true){
-							   $scope.message=data.data.mensaje;
+							   $scope.message=data.data.Message;
 							   $scope.getdata.push($scope.NewPost);
 							   $scope.NewPost = {};
 							}else{
-							   $scope.messageError=data.data.mensaje;
+							   $scope.messageError=data.data.Message;
 						   }
 						   console.log(data);
 						   $scope.loading = false;
 						   $scope.inactive= false;
                  }, function errorCallback(data){
-                     $scope.messageError=data.data.mensaje;
+                     $scope.messageError=data.data.Message;
 					 console.log(data);
 					 $scope.loading = false;
 					 $scope.inactive= false;
