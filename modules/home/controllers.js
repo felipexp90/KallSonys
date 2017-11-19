@@ -12,7 +12,7 @@ angular.module('Home')
 			
 			 $http({
                 method: 'GET',
-                url: 'http://laptop-diego:9092/api/clientes?e_mail=felipexp90@gmail.com'
+                url: 'http://laptop-diego:9092/api/clientes?e_mail='+ $rootScope.username
             }).then(function successCallback(response) {
 					$scope.documento = response.data[0].documento;
 					$scope.nombres = response.data[0].nombres;
