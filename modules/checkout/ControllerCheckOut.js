@@ -149,7 +149,8 @@ try{
 													$scope.direccion= data.data.orden.cliente.direcciones[0].direccion;
 												}
 												if(data.data.orden.cliente.numero != null ){
-													$scope.creditCard=data.data.orden.cliente.numero;
+												    $scope.creditCard = data.data.orden.cliente.numero;
+												    $scope.typeCreditCard = data.data.orden.cliente.tipo;
 												}
 												
 												angular.forEach(data.data.items, function (value, key)//Datos Producto
@@ -291,10 +292,8 @@ try{
 				//
 				$http.post(urlcheckout, dataObjArray)
 				.then(function successCallBack(data, status, headers, config) {
-						  if(data.statusText==="OK"){
-							  console.log("data:",data);
-							  
-							  
+				    console.log("datacheckout:", data);
+				    if (data.statusText === "OK") {
 							  $http.post(urlpayment, {
 								numeroTarjeta: $scope.creditCard,
 								tipoTarjeta: $scope.typeCreditCard,
@@ -303,9 +302,8 @@ try{
 								ciudadEntrega:$scope.ciudad
 								})
 								.then(function successCallBack(data, status, headers, config) {
-										  if(data.exitoso===true){
-											  
-											  console.log("data:",data);
+								    console.log("dataPayment:", data);
+								    if (data.exitoso === true) {
 											  $location.path('/ContentOrders'); //destino Ordenes.
 											  $scope.todo=[];//se reestablece LocalStorage.
 											} 

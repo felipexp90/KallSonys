@@ -450,63 +450,63 @@ padding-top:10px;
 .auth{text-align:right; font-weight:bold;height: 2px;}
 /*<< marcela vaquiro; 4/11/2017*/
 .box-product-image {
-	width: 500px;
-	height: 300px;
+	width: 40%;
+	height: 10%;
 	float: left;
 	overflow: hidden;
 	position: relative;
-	margin-left: 120px;
-	margin-bottom: 60px;
+	margin-left: 10%;
+	margin-bottom: 5%;
 	background: #fff;
-	border: 5px solid #ebf5fb;
+	border: none;
 }
 .box-product-detail {
-	width: 600px;
-	height: 300px;
+	width: 40%;
+	height: 10%;
 	float: right;
 	overflow: hidden;
 	position: relative;
 	margin-left: 0px;
-	margin-right: 80px;
-	margin-bottom: 60px;
+	margin-right: 5%;
+	margin-bottom: 4%;
 	background: #fff;
-	border: 5px solid #ebf5fb;
+	border: none;
 }
 .box-image{
-	width: 450px;
-	height: 250px;
+	width: 100%;
+	height: 50%;
 	position: relative;
-	margin-left: 10px;
-	margin-right: 10px;
-	margin-bottom: 10px;
-	margin-top: 40px;
+	margin-left: 1%;
+	margin-right: 1%;
+	margin-bottom: 6%;
+	margin-top: 5%;
 	text-align: center;
 }
 .box-text{
-	width: 400px;
-	height: 200px;
+	width: 90%;
+	height: 50%;
 	position: relative;
-	margin-left: 50px;
-	margin-right: 40px;
-	margin-bottom: 50px;
-	margin-top: 50px;
+	margin-left: 4%;
+	margin-right: 4%;
+	margin-bottom: 9%;
+	margin-top: 9%;
 	text-align: left;
 }
 .box-text select{  
-	width: 70px;
-	height: 40px;
-	margin-bottom: 8px;
+	width: 100%;
+	height: 50%;
+	margin-bottom: 4%;
 	font-size: 18px;
 	text-indent: 15px;
 }
 .img-box-image {
-	width: 200px;
-	height: 200px;
+	width: 55%;
+	height: 55%;
     float: center;
 }
 .box-gallery{
-	width: 10px;
-	height: 10px;
+	width: 1%;
+	height: 1%;
     float: left;
 }
 

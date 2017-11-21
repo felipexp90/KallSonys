@@ -120,17 +120,17 @@ angular.module('myapp', [
 	// --------------- TEXTSEARCH --------------------
 angular.module('myapp')
 .controller("headercontroller", function($scope,$http,$location){  
-		var productList = [];
 		$scope.nombres_elast = [];
 		$scope.producto = "";
 
 		$scope.complete = function(producto){
-		$http({
+        producto = $scope.producto;
+
+        $http({
         method: 'GET',
         url: "http://laptop-michael:7076/api/producto/buscar/scroll?page=0&items_per_page=10&nombre="+producto
         }).then(function successCallback(response) {
 			$scope.nombres_elast = [];
-			console.log("response.data ",response.data.productos);
 			angular.forEach(response.data.productos, function (value, key){
 				$scope.nombres_elast.push(
 				{
@@ -139,19 +139,20 @@ angular.module('myapp')
 				});
 				
 			});
-			
-			console.log("nombres_elast", $scope.nombres_elast);	
-			
-			productList = $scope.nombres_elast;
-			console.log("productList",productList);
+            
  		});
-		}
+    }
 
 		$scope.seleccionar = function(producto){
 			window.location.href = "http://localhost/KallsonysMovil/products.html#/ContentProducts?Id="+producto.id;
+            $scope.producto = producto.nombre;
+            $scope.nombres_elast = [];
 		}
+        
 
 	});
+
+ 
  
  
  // angular.module('myapp')

@@ -13,26 +13,28 @@
 			</div>
 		</div>
 		
-		<div class="large-6 columns" style="width: 100%;">
-				<table style="width: 100%;" style="border: solid 1px #ddd;border-spacing: 0;border-collapse: collapse;">
+		<div class="large-5 columns" style="width: 90%; position:relative; left:5%;">
+				<table style="width: 100%;border: solid 1px #ddd;border-spacing: 0;border-collapse: collapse;">
 				  <thead style="background: #f5f5f5; font-weight: bold;">
 					<tr>
-					  <th class="width_th_10">Id</th>
-					  <th class="width_th_30">Nombre</th>
-					  <th class="width_th_10">Cantidad</th>
-					  <th class="width_th_20">Precio unidad</th>
-					  <th class="width_th_20">Total producto</th>
-					  <!-- <th class="width_th_10"></th> -->
+					  <th class="width_th_10" style="text-align:center">No. Orden</th>
+					  <th class="width_th_30" style="text-align:center">Fecha</th>
+					  <th class="width_th_10" style="text-align:center">Estado</th>
+					  <th class="width_th_20" style="text-align:center">Valor total</th>
+					  <th class="width_th_20" style="text-align:center">Empresa de transporte</th>
+					  <th class="width_th_10"></th>
 					</tr>
 				  </thead>
 				  <tbody>		  	
 					<tr ng-repeat="prod in udpShopContent">
-					  <td class="width_th_10">{{prod.id}}</td>
-					  <td class="width_th_30">{{prod.nombre}}</td>
-					  <td class="width_th_10" style="padding-left: 25px;">{{prod.cantidad}}</td>
-					  <td class="width_th_20">$ {{prod.precio}}</td>
-					  <td class="width_th_20">$ {{roundCurrency(prod.precio*prod.cantidad)}}</td>
-					  <!-- <td class="width_th_10"><a class="button alert" ng-click="remove(prod.id)">X</a></td> -->
+					  <td class="width_th_10">{{prod.idOrden}}</td>
+					  <td class="width_th_30">{{prod.fecha_orden}}</td>
+					  <td class="width_th_10">{{prod.estado}}</td>
+					  <td class="width_th_20" style="text-align:right">{{prod.valorTotal | currency:"$"}} {{}}</td>
+					  <td class="width_th_20">{{prod.carrier}}</td>
+                        <!-- {{roundCurrency(prod.precio*prod.cantidad)}} -->
+					   <td class="width_th_10">
+                    <button type="button" class="btn btn-default" ng-click="detalle(prod.idOrden)">Ver detalle</button></td> 
 					</tr>
 					<tr style="border: solid 1px #ddd;">
 						<td colspan="6"></td>
