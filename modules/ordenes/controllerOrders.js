@@ -37,13 +37,68 @@ angular.module("Orders",[])
                 }, function errorCallback(response) {
                     // Manejar error
                     $scope.dataLoading = false;
-                    $scope.error = true;
-                    $scope.errorMsj = "Error al consultar.";
+                    $scope.success = true;
+                    $scope.successMsj = "No posee ordenes.";
                 });
             };
         }
 
+        /* LocalStorage>>*/
+		 
+		 /**
+		* @desc - redondea el precio que le pasemos con dos decimales
+		*/
+		$scope.roundCurrency = function(total)
+		{
+			return total.toFixed(2);
+		}
+
         $scope.detalle = function (idOrden) {
-            console.log(idOrden);
-        };
+            $scope.OrderContent = [];
+            var totalShop = 0;
+      
+            if(idOrden!= undefined){
+                $scope.dataLoading = true;
+
+                $http({
+                    method: 'GET',
+                    url: 'http://laptop-diego:9091/api/ordenes/'+idOrden+'/detalle'
+                }).then(function successCallback(response) {
+                    console.log(response);
+                    if(response.data.length >0){
+                        $scope.OrdersValid=true;
+                        angular.forEach(response.data, function (value, key)
+                        {
+                            //console.log(value.producto.precio * parseInt(value.itemCarrito.cantidad));
+                                    $scope.OrderContent.push({
+                                     "idProducto" : value.itemCarrito.idProducto,
+                                    "cantidad" :  parseInt(value.itemCarrito.cantidad),
+                                     "nombre" :value.producto.nombre,
+                                     "precio" :value.producto.precio,
+                                     "urlImage" : value.producto.urlImage,
+                                     "total": value.producto.precio * parseInt(value.itemCarrito.cantidad)
+                                    });	
+
+                                    totalShop=totalShop+(value.producto.precio * parseInt(value.itemCarrito.cantidad));
+                        });
+                        $scope.udpShopTotalPrice = totalShop;
+                        //console.log($scope.OrderContent);
+                    }else{
+                        scope.error = true;
+                        $scope.errorMsj = "Orden no existe.";
+                    }
+                    $scope.dataLoading = false;
+                }, function errorCallback(response) {
+                    $scope.OrdersValid=false;
+                    $scope.dataLoading = false;
+                    $scope.error = true;
+                    $scope.errorMsj = "Error al consultar la orden.";
+                });
+            }else{
+                scope.error = true;
+                $scope.errorMsj = "Orden Invalida.";
+            }
+      };
+
+      
 }]);
