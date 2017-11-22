@@ -302,31 +302,35 @@ try{
 								ciudadEntrega:$scope.ciudad
 								})
 								.then(function successCallBack(data, status, headers, config) {
-									console.log("dataPayment:", data);
-									console.log("exitoso:", data.data.exitoso);
+									//console.log("dataPayment:", data);
+									//console.log("exitoso:", data.data.exitoso);
 								    if (data.data.exitoso === true) {
-											  $location.path('/ContentOrders'); //destino Ordenes.
+											  $rootScope.success = true;
+											  $rootScope.successMsj = data.data.mensaje;
 											  $scope.todo=[];//se reestablece LocalStorage.
-											  $scope.loading = false;
+											  $scope.dataLoading = false; 
+											  $location.path('/ContentOrders'); //destino Ordenes.
+											  
 									} else{
+										
 										$scope.error=true;
 										$scope.errorMsj=data.data.mensaje;
-										$scope.loading = false;
+										$scope.dataLoading = false;
 									}
 										   
 								 }, function errorCallback(data){
 									 $scope.error=true;
 									 $scope.errorMsj=data.data.mensaje;
-									 $scope.loading = false;
+									 $scope.dataLoading = false;
 								});
 							  
 							  
 						  } 
-						  $scope.loading = false;
+						  $scope.dataLoading = false;
 				 }, function errorCallback(data){
 					 $scope.error=true;
                      $scope.errorMsj=data.data.message;
-					 $scope.loading = false;
+					 $scope.dataLoading = false;
 				});
 				
 				
