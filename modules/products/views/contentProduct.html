@@ -5,6 +5,13 @@
 			<span ng-if="error">{{errorMsj}}</span>
 		</div>
 
+		<div ng-show="addCart">
+				<span class="messageSuccess">{{message}}</span>
+				<a href="cart.html#/ContentCart">
+					<img src="images/Loading/shopping-cart.jpg" alt="Cart" style="height: 50px; cursor:pointer;"  />
+				</a>
+		</div>
+
 		<div id="products-details">
 			<div class="box-gallery">
 				<ul>
@@ -35,11 +42,5 @@
 						<input type="button" class="btn btn-warning" value="Agregar al carrito" ng-click="addAct()" />
 					</div>
 				</div>
-			</div>
-			<div ng-show="addCart">
-				<span class="messageSuccess">{{message}}</span>
-				<a href="cart.html#/ContentCart">
-					<img src="images/Loading/shopping-cart.jpg" alt="Cart" style="height: 50px; cursor:pointer;"  />
-				</a>
-			</div>
+		</div>
 </div>

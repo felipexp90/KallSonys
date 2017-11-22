@@ -335,8 +335,9 @@ try{
 		}
 		
 		$scope.UpdateCant=function(idProduct, cantidad){
-		   //console.log("idProduct",idProduct);
-		   //console.log("cantidad",cantidad);
+			var products = [];
+			var productsTodo =[];
+
 		   if(cantidad===null || cantidad===0){
 			   cantidad=1;
 		   }
@@ -347,12 +348,36 @@ try{
 				break;   
 			   }   
 			}
+
+			angular.forEach($scope.todo, function (value, key)
+			 {
+			 	if(parseInt(idProduct)===parseInt(value[0].productId)){
+					products.push({
+						"productId": idProduct,
+						"Cantidad": cantidad
+					});
+					productsTodo.push(products);
+					products = [];
+				}else{
+					products.push({
+						"productId": value[0].productId,
+						"Cantidad": value[0].Cantidad
+					});
+					productsTodo.push(products);
+					products = [];
+				}   
+			});
+			// console.log("Antes $scope.todo:",$scope.todo);
+			$scope.todo = productsTodo;
+			// console.log("Final $scope.todo:",$scope.todo);
 			
+
 			$scope.udpShopTotalPrice=0;
 			angular.forEach($scope.udpShopContent,function(value, key){
 				//console.log("cantidad:",value.cantidad,"precio:",value.precio);
 				$scope.udpShopTotalPrice=$scope.udpShopTotalPrice+(parseInt(value.cantidad) * value.precio);
 			});
+
 
 			
 			//console.log("cantidad:",parseInt(value[0].Cantidad)," precio:",precio);
