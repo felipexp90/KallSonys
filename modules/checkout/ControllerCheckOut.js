@@ -252,7 +252,7 @@ try{
 		
 		
 		
-		$scope.payment=function(){
+		$scope.payment=function(){	
 			
 			var productValue =0;
 			var cantidadValue =0;
@@ -302,12 +302,18 @@ try{
 								ciudadEntrega:$scope.ciudad
 								})
 								.then(function successCallBack(data, status, headers, config) {
-								    console.log("dataPayment:", data);
-								    if (data.exitoso === true) {
+									console.log("dataPayment:", data);
+									console.log("exitoso:", data.data.exitoso);
+								    if (data.data.exitoso === true) {
 											  $location.path('/ContentOrders'); //destino Ordenes.
 											  $scope.todo=[];//se reestablece LocalStorage.
-											} 
-										   $scope.loading = false;
+											  $scope.loading = false;
+									} else{
+										$scope.error=true;
+										$scope.errorMsj=data.data.mensaje;
+										$scope.loading = false;
+									}
+										   
 								 }, function errorCallback(data){
 									 $scope.error=true;
 									 $scope.errorMsj=data.data.mensaje;
