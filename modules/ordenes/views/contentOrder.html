@@ -12,7 +12,13 @@
 				<p>&nbsp;</p>
 			</div>
 		</div>
-		
+		<div style="text-align: right; padding-right: 3%;">
+				<input name="idOrdenSearch" id="idOrdenSearch" ng-model="idOrdenSearch" type="Text" style="height: 30px;" />
+				<a class="btn btn-info" ng-click='FindOrder()'>
+					  <span class="glyphicon glyphicon-search"></span>
+				</a>
+		</div>
+		<br>
 		<div class="large-5 columns" style="width: 90%; position:relative; left:5%;">
 				<table style="width: 100%;border: solid 1px #ddd;border-spacing: 0;border-collapse: collapse;">
 				  <thead style="background: #f5f5f5; font-weight: bold;">
@@ -27,11 +33,11 @@
 				  </thead>
 				  <tbody>		  	
 					<tr ng-repeat="prod in udpShopContent" style="border: solid 1px #ddd;">
-					  <td class="width_th_10">{{prod.idOrden}}</td>
-					  <td class="width_th_30">{{prod.fecha_orden}}</td>
-					  <td class="width_th_10">{{prod.estado}}</td>
-					  <td class="width_th_20" style="text-align:right">{{prod.valorTotal | currency:"$"}} {{}}</td>
-					  <td class="width_th_20">{{prod.carrier}}</td>
+					  <td class="width_th_10 GeneralFont">{{prod.idOrden}}</td>
+					  <td class="width_th_30 GeneralFont">{{prod.fecha_orden}}</td>
+					  <td class="width_th_10 GeneralFont">{{prod.estado}}</td>
+					  <td class="width_th_20 GeneralFont" style="text-align:right">{{prod.valorTotal | currency:"$"}} {{}}</td>
+					  <td class="width_th_20 GeneralFont">{{prod.carrier}}</td>
                         <!-- {{roundCurrency(prod.precio*prod.cantidad)}} -->
 					   <td class="width_th_10" style="height: 50px;">
 										<button type="button" class="btn btn-info" ng-click="detalle(prod.idOrden)">Ver detalle</button>
@@ -47,30 +53,31 @@
 
 
 		<div ng-if="OrdersValid" class="large-6 columns" style="width: 97%; position:relative; left:2%;">
-				<div><h5 style="color: #5dade2;text-align: center;width: 100%; background-color:#F8FAFA">Datos Productos</h5></div>
+				<div><h4 style="color: #5dade2;text-align: center;width: 100%; background-color:#F8FAFA">Datos Productos</h4></div>
 				<table style="width: 100%;border: solid 1px #ddd;border-spacing: 0;border-collapse: collapse;">
 					<thead style="background: #f5f5f5; font-weight: bold;">
 					<tr>
 						<th class="width_th_10"></th> 
-						<th class="width_th_10">Id</th>
-						<th class="width_th_30">Nombre</th>
-						<th class="width_th_10">Cantidad</th>
-						<th class="width_th_20">Precio unidad</th>
-						<th class="width_th_20">Total producto</th>
+						<th class="width_th_10" style="text-align:center">Id</th>
+						<th class="width_th_30" style="text-align:center">Nombre</th>
+						<th class="width_th_10" style="text-align:center">Cantidad</th>
+						<th class="width_th_20" style="text-align:center">Precio unidad</th>
+						<th class="width_th_20" style="text-align:center">Total producto</th>
 						
 					</tr>
 					</thead>
 					<tbody>		  	
 					<tr ng-repeat="prod in OrderContent">
-						<td class="width_th_10">{{prod.urlImage}}</td>
-						<td class="width_th_10">{{prod.idProducto}}</td>
-						<td class="width_th_30">{{prod.nombre}}</td>
-						<td class="width_th_10" style="padding-left: 25px;">{{prod.cantidad}}</td>
-						<td class="width_th_20">$ {{prod.precio}}</td>
-						<td class="width_th_20">$ {{roundCurrency(prod.total)}}</td>
+						<td class="width_th_10 GeneralFont" style="padding-top: 5px;padding-bottom: 5px;"><img style="width: 60px;height: 60px;" ng-src="{{prod.urlImage}}" /></td>
+						<td class="width_th_10 GeneralFont">{{prod.idProducto}}</td>
+						<td class="width_th_30 GeneralFont">{{prod.nombre}}</td>
+						<td class="width_th_10 GeneralFont" style="padding-left: 25px;">{{prod.cantidad}}</td>
+						<td class="width_th_20 GeneralFont">{{prod.precio | currency:"$"}}</td>
+						<td class="width_th_20 GeneralFont">{{roundCurrency(prod.total) | currency:"$"}}</td>
 					</tr>
 					<tr>
-						<td colspan="6" style="text-align: right;"><span style="font-weight: bold;">Total: </span>$ {{ roundCurrency(udpShopTotalPrice) }}</td>
+						<td colspan="6" style="text-align: right;"><span style="font-weight: bold;">Total: </span>
+							<span class="GeneralFont">{{ roundCurrency(udpShopTotalPrice) | currency:"$" }}</span></td>
 					</tr>
 					
 					

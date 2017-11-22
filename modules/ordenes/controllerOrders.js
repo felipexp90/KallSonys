@@ -33,7 +33,7 @@ angular.module("Orders",[])
                     // Manejar resultado
                     $scope.udpShopContent = response.data;
                     $scope.dataLoading = false;
-                    console.log($scope.udpShopContent);
+                    //console.log($scope.udpShopContent);
                 }, function errorCallback(response) {
                     // Manejar error
                     $scope.dataLoading = false;
@@ -56,6 +56,7 @@ angular.module("Orders",[])
         $scope.detalle = function (idOrden) {
             $scope.OrderContent = [];
             var totalShop = 0;
+            $scope.error = false;
       
             if(idOrden!= undefined){
                 $scope.dataLoading = true;
@@ -64,7 +65,7 @@ angular.module("Orders",[])
                     method: 'GET',
                     url: 'http://laptop-diego:9091/api/ordenes/'+idOrden+'/detalle'
                 }).then(function successCallback(response) {
-                    console.log(response);
+                    //console.log(response);
                     if(response.data.length >0){
                         $scope.OrdersValid=true;
                         angular.forEach(response.data, function (value, key)
@@ -75,7 +76,7 @@ angular.module("Orders",[])
                                     "cantidad" :  parseInt(value.itemCarrito.cantidad),
                                      "nombre" :value.producto.nombre,
                                      "precio" :value.producto.precio,
-                                     "urlImage" : value.producto.urlImage,
+                                     "urlImage" : 'http://laptop-diego:9091/'+value.producto.urlImage,
                                      "total": value.producto.precio * parseInt(value.itemCarrito.cantidad)
                                     });	
 
@@ -98,7 +99,29 @@ angular.module("Orders",[])
                 scope.error = true;
                 $scope.errorMsj = "Orden Invalida.";
             }
-      };
+      }
+
+      $scope.FindOrder = function(){
+          $scope.error = false;
+          $scope.dataLoading = true;
+
+          if($scope.idOrdenSearch != undefined && $scope.udpShopContent != undefined){
+                for(var i=0; i< $scope.udpShopContent.length; i++){
+                     if(parseInt($scope.udpShopContent[i].idOrden) === parseInt($scope.idOrdenSearch)){
+                        $scope.detalle($scope.idOrdenSearch);
+                        break;
+                    }else{
+                        $scope.dataLoading = false;
+                        $scope.error = true;
+                        $scope.errorMsj = "Id Orden no encontrada.";
+                      }
+                }
+        }else{
+            $scope.dataLoading = false;
+            $scope.error = true;
+            $scope.errorMsj = "Orden Invalida.";
+          }
+      }
 
       
 }]);

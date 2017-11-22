@@ -17,6 +17,7 @@
 		<script type='text/javascript' src="modules/products/angular.js"></script>
 		<script type='text/javascript' src="modules/products/ng-infinite-scroll.min.js"></script>
 		<script type='text/javascript' src="modules/products/producto.controller.js"></script>
+		<script type='text/javascript' src="modules/products/controllers.js"></script>
 		
 
 		<!-- <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script> -->
@@ -110,6 +111,8 @@
 									<th>
 										<span>Categoria</span>
 									</th>
+									<th>
+									</th>
 								</tr>
 							</thead>
 							<tbody infinite-scroll='reddit.nextPage()' infinite-scroll-disabled='reddit.busy' infinite-scroll-distance='1'>
@@ -126,8 +129,9 @@
 									<td>{{item.precio}}</td>
 									<td>{{item.estado}}</td>
 									<td>{{item.marca}}</td>
-									<td>{{item.categoria}}
-
+									<td>{{item.categoria}}</td>
+									<td>
+										<a href="http://localhost/KallsonysMovil/products.html#/ContentProducts?Id={{item.id}}"><input type="button" class="btn btn-primary" value="Agregar al carrito"></a>
 									</td>
 								</tr>
 							</tbody>

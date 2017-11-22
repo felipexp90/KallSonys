@@ -7,8 +7,8 @@
     Producto.$inject = ['$resource'];
 
     function Producto ($resource) {
+        // var resourceUrl =  'laptop-michel:7076/api/productos/:id';
         var resourceUrl =  'laptop-michel:7076/api/productos/:id';
-
         return $resource(resourceUrl, {}, {
             'query': { 
                 method: 'GET', 

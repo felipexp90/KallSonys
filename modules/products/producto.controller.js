@@ -18,7 +18,8 @@ app.factory('Reddit', function($http) {
     if (this.busy) return;
     this.busy = true;
 
-	var url = "http://laptop-michael:7076/api/producto/buscar/scroll?page=" + this.page + '&items_per_page=20';
+  // var url = "http://laptop-michael:7076/api/producto/buscar/scroll?page=" + this.page + '&items_per_page=20';
+  var url = "http://laptop-diego:9091/api/producto/buscar/scroll?page=" + this.page + '&items_per_page=20';
     //var url = "https://api.reddit.com/hot?after=" + this.after + "&jsonp=JSON_CALLBACK";
     //$http.jsonp(url).success(function(data) {
     $http.get(url).success(function(data) {
@@ -35,3 +36,4 @@ app.factory('Reddit', function($http) {
 
   return Reddit;
 });
+
