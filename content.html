@@ -1,4 +1,4 @@
-	<!--==category boxes==-->
+<!--==category boxes==-->
 	<div class="container-Main">
 		<div id="heading-block">
 			<h2>Ofertas Destacadas</h2>		
@@ -24,184 +24,27 @@
 	
 		<!--==HEADING OF CATEGORY==-->
 		<div id="heading-block">
-			<h2>Productos</h2>		
+			<h2>Productos mas vendidos</h2>		
 		</div>
 
-		<div class="prod-container">
+		<div class="prod-container" ng-controller="ImagesRanking">
 
 				<!--==1st product==-->
-			<div class="prod-box">
-				<img src="images/pro1.jpg" alt="main suit">
 
-				<div class="prod-trans">
-				
-				<div class="prod-feature">
-				<p>Chaquetas</p>
-				<p style="color:#fff;font-weight: bold;">Precio : $100</p>	
-				<input type="button" value="Add to cart">		
-				</div>	
+			<div class="prod-box" ng-repeat="producto in ranking" active="producto.active">
+				<a href="{{urlProductos + producto.productId}}">
+					<img style="width: 100%" ng-src="{{producto.image}}">
+				</a>
 
+				<div class="prod-trans">				
+					<div class="prod-feature">
+						<p>{{producto.nombre}}</p>
+						<p style="color:#fff;font-weight: bold;">Precio : {{producto.precio}}</p>	
+						<a href="http://localhost/KallsonysMovil/products.html#/ContentProducts?Id={{producto.productId}}"><input type="button" class="btn btn-primary" value="Ver detalle"></a>
+					</div>	
 				</div>		
 			</div>	
-
-						<!--==2nd product==-->
-			<div class="prod-box">
-				<img src="images/pro2.jpg" alt="main suit">
-
-				<div class="prod-trans">
-				
-				<div class="prod-feature">
-				<p>Chaquetas</p>
-				<p style="color:#fff;font-weight: bold;">Precio : $100</p>	
-				<input type="button" value="Add to cart">		
-				</div>	
-
-				</div>		
-			</div>	
-
-					<!--==3rd product==-->
-			<div class="prod-box">
-				<img src="images/pro3.jpg" alt="main suit">
-
-				<div class="prod-trans">
-				
-				<div class="prod-feature">
-				<p>Chaquetas</p>
-				<p style="color:#fff;font-weight: bold;">Precio : $100</p>	
-				<input type="button" value="Add to cart">		
-				</div>	
-
-				</div>		
-			</div>	
-
-					<!--==4th product==-->
-			<div class="prod-box">
-				<img src="images/pro4.jpg" alt="main suit">
-
-				<div class="prod-trans">
-				
-				<div class="prod-feature">
-				<p>Chaquetas</p>
-				<p style="color:#fff;font-weight: bold;">Precio : $100</p>	
-				<input type="button" value="Add to cart">		
-				</div>	
-
-				</div>		
-			</div>	
-
-					<!--==5th product==-->
-			<div class="prod-box">
-				<img src="images/pro5.jpg" alt="main suit">
-
-				<div class="prod-trans">
-				
-				<div class="prod-feature">
-				<p>Chaquetas</p>
-				<p style="color:#fff;font-weight: bold;">Precio : $100</p>	
-				<input type="button" value="Add to cart">		
-				</div>	
-
-				</div>		
-			</div>	
-
-					<!--==6th product==-->
-			<div class="prod-box">
-				<img src="images/pro6.jpg" alt="main suit">
-
-				<div class="prod-trans">
-				
-				<div class="prod-feature">
-				<p>Chaquetas</p>
-				<p style="color:#fff;font-weight: bold;">Precio : $100</p>	
-				<input type="button" value="Add to cart">		
-				</div>	
-
-				</div>		
-			</div>	
-
-					<!--==7th product==-->
-			<div class="prod-box">
-				<img src="images/pro7.jpg" alt="main suit"> 
-
-				<div class="prod-trans">
-				
-				<div class="prod-feature">
-				<p>Chaquetas</p>
-				<p style="color:#fff;font-weight: bold;">Precio : $100</p>	
-				<input type="button" value="Add to cart">		
-				</div>	
-
-				</div>		
-			</div>	
-
-					<!--==8th product==-->
-			<div class="prod-box">
-				<img src="images/pro8.jpg" alt="main suit">
-
-				<div class="prod-trans">
-				
-				<div class="prod-feature">
-				<p>Chaquetas</p>
-				<p style="color:#fff;font-weight: bold;">Precio : $100</p>	
-				<input type="button" value="Add to cart">		
-				</div>	
-
-				</div>		
-			</div>	
-
-					<!--==9th product==-->
-			<div class="prod-box">
-				<img src="images/pro9.jpg" alt="main suit">
-
-				<div class="prod-trans">
-				
-				<div class="prod-feature">
-				<p>Chaquetas</p>
-				<p style="color:#fff;font-weight: bold;">Precio : $100</p>	
-				<input type="button" value="Add to cart">		
-				</div>	
-
-				</div>		
-			</div>	
-
-					<!--==ten product==-->
-			<div class="prod-box">
-				<img src="images/pro10.jpg" alt="main suit">
-
-				<div class="prod-trans">
-				
-				<div class="prod-feature">
-				<p>Chaquetas</p>
-				<p style="color:#fff;font-weight: bold;">Precio : $100</p>	
-				<input type="button" value="Add to cart">		
-				</div>	
-
-				</div>		
-			</div>	
+	
 		</div>
-
-		<!--==offers==-->
-		
-			<div id="heading-block">
-				<h2>Ofertas</h2>
-			</div>
-			<!--==offers boxes==-->
-			<div class="offer">
-				<a href="#">
-					<img src="images/offer1.jpg">
-				</a>
-			</div>
-
-			<div class="offer">
-				<a href="#">
-					<img src="images/offer2.jpg">
-				</a>
-			</div>
-
-			<div class="offer">
-				<a href="#">
-					<img src="images/offer3.jpg">
-				</a>
-			</div>
 		
 	</div>

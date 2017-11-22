@@ -16,7 +16,32 @@
 				<div class="tittle_h2 divC1">E-mail:</div><div class="margin-top divC1"><input name="txt_email" type="text" ng-model="NewPost.correo_e"/></div>
 				<div class="tittle_h2 divC1 divClear">Clave:</div><div class="margin-top divC1"><input name="txt_pass" type="password" ng-model="NewPost.password"/></div>
 				<div class="tittle_h2 divC1 divClear">Confirmar Clave:</div><div class="margin-top divC1"><input name="txt_pass_Confirm" type="password" ng-model="NewPost.Confirm_password"/></div>
-				<div class="tittle_h2 divC1 divClear"></div>
+				<div class="tittle_h2 divC1 divClear"></div><div class="margin-top divC1"></div>
+				<div>
+						<input type="checkbox" id="chkAutorization" ng-model="chkAutorization" ng-checked="autorization" onclick="EnabledControllers();">Autorizo Guardar Mi Tarjeta de Credito en el Sistema de KallSonys.
+						
+				</div>
+				<div class="tittle_h2 divC1 divClear"></div><div class="margin-top divC1"></div>
+				<div class="divC1 divClear">Tipo Tarjeta:</div>
+				<div class="margin-top divC1">
+						<select name="singleSelect" id="typeCreditCard" ng-model="NewPost.typeCreditCard" style="width: 290px;" disabled="disabled">
+								<option value="">--- Seleccione Una Opcion ---</option>
+								<option value="VISA" selected="selected">VISA</option>
+								<option value="MASTERCARD">MASTERCARD</option>
+								<option value="AMEX">AMEX</option>
+								<option value="DISCOVER">DISCOVER</option>
+								<option value="DINERS">DINERS</option>
+						</select>
+				</div>
+				<div class="divC1 divClear">Numero de Tarjeta:</div>
+				<div class="margin-top divC1" >
+						<input name="txt_tarjeta" id="txt_tarjeta" type="text" ng-model="NewPost.creditCard" disabled="disabled"/>
+				</div>
+				
+
+
+				
+
 				<div class="divClear padding-top">
 					<button type="button" class="btn btn-primary" ng-click="AddPost()" ng-disabled="inactive">Aceptar</button>
 					<button type="button" class="btn btn-primary" ng-click="limpiar()">Limpiar</button>

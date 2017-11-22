@@ -41,6 +41,16 @@
 		}
 	 }
 	 
+	 function EnabledControllers(){
+		if (document.getElementById('chkAutorization').checked) {
+			document.getElementById("typeCreditCard").disabled = false;
+			document.getElementById("txt_tarjeta").disabled = false;
+    	}else{
+			document.getElementById("typeCreditCard").disabled = true;
+			document.getElementById("txt_tarjeta").disabled = true;
+    	}
+	 }
+
 	 function myFunction() {
 		var x = document.getElementById("myTopnav");
 		if (x.className === "topnav") {

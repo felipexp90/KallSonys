@@ -14,11 +14,14 @@ angular.module('Home')
                 method: 'GET',
                 url: 'http://laptop-diego:9092/api/clientes?e_mail='+ $rootScope.username
             }).then(function successCallback(response) {
+				//console.log(response);
 					$scope.documento = response.data[0].documento;
 					$scope.nombres = response.data[0].nombres;
 					$scope.apellidos = response.data[0].apellidos;
 					$scope.telefono = response.data[0].telefono;
 					$scope.correo_e = response.data[0].correo_e;
+					$scope.typeCreditCard = response.data[0].datos_tarjeta.tipo;
+					$scope.creditCard = response.data[0].datos_tarjeta.numero; 
 					$scope.dataLoading = false;
 			}, function errorCallback(response) {
 				$scope.dataLoading = false;
@@ -30,6 +33,16 @@ angular.module('Home')
 		
 		
 		$scope.EditarUser_Click = function () {
+
+			var datosTarjeta ={};
+			 if($scope.typeCreditCard!= undefined && $scope.typeCreditCard!= undefined){
+				   datosTarjeta={
+					   "tipo": $scope.typeCreditCard,
+					   "numero": $scope.creditCard
+					}	
+			}
+		   
+
 			if($scope.nombres=== undefined){ 
 				$scope.error = true;
 				$scope.errorMsj = "El Nombre es invalido.";
@@ -50,7 +63,8 @@ angular.module('Home')
 							nombres:$scope.nombres,
 							apellidos:$scope.apellidos,
 							telefono:$scope.telefono,
-							correo_e:$scope.correo_e
+							correo_e:$scope.correo_e,
+							datos_tarjeta : datosTarjeta
 					  }).then(function successCallBack(data, status, headers, config) {
 						         if(data.data.success == true){
 									 $scope.success = true;

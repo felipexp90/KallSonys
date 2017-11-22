@@ -34,6 +34,26 @@
                 </div>
             <div class="tittle_h2 divC1 divClear">E-mail:</div>
                 <div class="margin-top divC1">{{correo_e}}</div>
+
+                <div class="tittle_h2 divC1 divClear"></div>
+                <div class="margin-top divC1">Autorizo Guardar Mi Tarjeta de Credito en el Sistema de KallSonys.</div>
+                
+
+            <div class="tittle_h2 divC1 divClear">Tipo Tarjeta:</div>
+                <div class="margin-top divC1">
+                    <select name="singleSelect" id="typeCreditCard" ng-model="typeCreditCard" style="width: 290px;" >
+                        <option value="">--- Seleccione Una Opcion ---</option>
+                        <option value="VISA" selected="selected">VISA</option>
+                        <option value="MASTERCARD">MASTERCARD</option>
+                        <option value="AMEX">AMEX</option>
+                        <option value="DISCOVER">DISCOVER</option>
+                        <option value="DINERS">DINERS</option>
+                    </select>
+                </div>
+                <div class="tittle_h2 divC1 divClear">Número Tarjeta:</div>
+                <div class="margin-top divC1">
+                        <input name="txt_tarjeta" id="txt_tarjeta" type="text" ng-model="creditCard"/>
+                </div>
             <div class="divClear padding-top">
                         <button type="button" ng-disabled="$invalid || dataLoading" class="btn btn-danger" ng-click="EditarUser_Click()">Editar</button>
             </div> 

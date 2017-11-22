@@ -77,6 +77,17 @@ angular.module('Authentication')
 		 $scope.inactive= true;
 		 $scope.message="";
 		 $scope.messageError="";
+
+		 var datosTarjeta ={};
+		 if($scope.chkAutorization===true){
+			if($scope.NewPost.typeCreditCard!= undefined && $scope.NewPost.creditCard!= undefined){
+				datosTarjeta={
+					"tipo": $scope.NewPost.typeCreditCard,
+					"numero": $scope.NewPost.creditCard
+				 }	
+			}
+		}
+		 		 
 	if($scope.NewPost.password != $scope.NewPost.Confirm_password){
 		 $scope.messageError= "Las contraseñas no concuerdan, Por favor valide la información."; 
 		 $scope.loading = false;
@@ -89,16 +100,18 @@ angular.module('Authentication')
 					nombres: $scope.NewPost.nombres,
 					telefono: $scope.NewPost.telefono,
 					correo_e: $scope.NewPost.correo_e,
-					password: $scope.NewPost.password
+					password: $scope.NewPost.password,
+					datos_tarjeta : datosTarjeta
                 }).then(function successCallBack(data, status, headers, config) {
-                            if(data.data.success == true){
-							   $scope.message=data.data.Message;
+					//console.log(data);
+                            if(data.data.success === true){
+							   $scope.message=data.data.mensaje;
 							   $scope.getdata.push($scope.NewPost);
 							   $scope.NewPost = {};
 							}else{
 							   $scope.messageError=data.data.Message;
 						   }
-						   console.log(data);
+						   //console.log(data);
 						   $scope.loading = false;
 						   $scope.inactive= false;
                  }, function errorCallback(data){

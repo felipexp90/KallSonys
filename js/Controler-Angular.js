@@ -160,5 +160,76 @@ app.factory('Reddit', function($http) {
 
   return Reddit;
 });
+
+app.controller("ImagesRanking",function($scope, $http){
+	$scope.dataLoading = true;
+	$scope.myInterval = 3000;
+	$scope.urlProductos = "http://localhost/KallsonysMovil/products.html#/ContentProducts?Id=";
+	
+	var rankingArray = [];
+	var rankingArrayDetail = [];
+
+	function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
+	}
+
+	var fechadesde = new Date();
+	var fechahasta = new Date();
+	fechadesde.setMonth(fechadesde.getMonth() - 1);
+
+	var fecini = formatDate(fechadesde); 
+	var fecfin = formatDate(fechahasta); 
+
+
+	console.log("fecini",fecini);
+	console.log("fecfin",fecfin);
+	
+	 $http({
+                method: 'GET',
+                url: 'http://laptop-diego:9091/api/ordenes/rankingProductosFechas?fechaInicio='+fecini+'&fechaFin='+fecfin
+            }).then(function successCallback(response) {
+//				console.log("response",response);
+				angular.forEach(response.data, function (value, key)					
+					{
+						$http({
+                		method: 'GET',
+                		url: "http://laptop-diego:9091/api/producto/"+value.idProducto
+            			}).then(function successCallback(response) {
+//							console.log("response detailProduct",response);
+
+						rankingArray.push(
+							{
+								"image": 'http://laptop-diego:9091/api/imageSmall/'+value.idProducto,
+								"productId": value.idProducto,
+								"nombre": response.data.nombre,
+								"precio": response.data.precio
+
+							}
+							
+						);
+						});
+
+//					console.log("value.idProducto", value.idProducto);
+//					console.log("rankingArray",rankingArray);		
+//					console.log("rankingArrayDetail ",rankingArrayDetail);				
+					
+					$scope.dataLoading = false;
+					$scope.ranking = rankingArray;
+
+		      }, function errorCallback(response) {
+				$scope.dataLoading = false;
+			//	console.log(response);
+      	});
+
+	 });
+});
  
  
