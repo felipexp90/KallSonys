@@ -7,7 +7,7 @@ var app = angular.module("myapp",['ui.bootstrap','infinite-scroll']);
 		$scope.complete = function(producto){
 		$http({
         method: 'GET',
-        url: "http://laptop-michael:7076/api/producto/buscar/scroll?page=0&items_per_page=10&nombre="+producto
+        url: "http://laptop-diego:9091/api/producto/buscar/scroll?page=0&items_per_page=10&nombre="+producto
         }).then(function successCallback(response) {
 			$scope.nombres_elast = [];
 			angular.forEach(response.data.productos, function (value, key){
@@ -23,7 +23,7 @@ var app = angular.module("myapp",['ui.bootstrap','infinite-scroll']);
 		}
 
 		$scope.seleccionar = function(producto){
-			window.location.href = "http://localhost/KallsonysMovil/products.html#/ContentProducts?Id="+producto.id;
+			window.location.href = "http://KallSonys.com/KallsonysMovil/products.html#/ContentProducts?Id="+producto.id;
 		}
 
 	});
@@ -32,7 +32,7 @@ var app = angular.module("myapp",['ui.bootstrap','infinite-scroll']);
  app.controller("SliderPage",function($scope, $http){
 	$scope.dataLoading = true;
 	$scope.myInterval = 3000;
-	$scope.urlProductos = "http://localhost/KallsonysMovil/products.html#/ContentProducts?Id=";
+	$scope.urlProductos = "http://KallSonys.com/KallsonysMovil/products.html#/ContentProducts?Id=";
 	
 	var output = [];
 	 $http({
@@ -62,7 +62,7 @@ var app = angular.module("myapp",['ui.bootstrap','infinite-scroll']);
  app.controller("ImagesCampanias",function($scope, $http){
 	$scope.dataLoading = true;
 	$scope.myInterval = 3000;
-	$scope.urlProductos = "http://localhost/KallsonysMovil/products.html#/ContentProducts?Id=";
+	$scope.urlProductos = "http://KallSonys.com/KallsonysMovil/products.html#/ContentProducts?Id=";
 	
 	var campaniasArray = [];
 	
@@ -130,8 +130,8 @@ app.factory('Reddit', function($http) {
   Reddit.prototype.nextPage = function() {
     if (this.busy) return;
     this.busy = true;
-
-	var url = "http://laptop-michael:7076/api/producto/buscar/scroll?page=" + this.page + '&items_per_page=20';
+	
+	var url = "http://laptop-diego:9091/api/producto/buscar/scroll?page=" + this.page + '&items_per_page=20';
 	if(this.codigoProducto !== null){
 		url += '&id=' + this.codigoProducto ;
 	}
@@ -164,7 +164,7 @@ app.factory('Reddit', function($http) {
 app.controller("ImagesRanking",function($scope, $http){
 	$scope.dataLoading = true;
 	$scope.myInterval = 3000;
-	$scope.urlProductos = "http://localhost/KallsonysMovil/products.html#/ContentProducts?Id=";
+	$scope.urlProductos = "http://KallSonys.com/KallsonysMovil/products.html#/ContentProducts?Id=";
 	
 	var rankingArray = [];
 	var rankingArrayDetail = [];

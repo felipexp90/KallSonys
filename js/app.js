@@ -144,7 +144,7 @@ angular.module('myapp')
     }
 
 		$scope.seleccionar = function(producto){
-			window.location.href = "http://localhost/KallsonysMovil/products.html#/ContentProducts?Id="+producto.id;
+			window.location.href = "http://KallSonys.com/KallsonysMovil/products.html#/ContentProducts?Id="+producto.id;
             $scope.producto = producto.nombre;
             $scope.nombres_elast = [];
 		}

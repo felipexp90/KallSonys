@@ -8,7 +8,7 @@ angular.module('Products', ["LocalStorageModule"])
 			var productImageSmallBaseUrl = 'http://laptop-diego:9091/api/ImageSmall/';
 			var productImageMediumBaseUrl = 'http://laptop-diego:9091/api/ImageMedium/';
 			var productImageLargeBaseUrl = 'http://laptop-diego:9091/api/ImageLarge/';
-			$scope.urlProductos = "http://localhost/KallsonysMovil/products.html#/ContentProducts?Id=";
+			$scope.urlProductos = "http://KallSonys.com/KallsonysMovil/products.html#/ContentProducts?Id=";
 			UserServices.validateUser();
 			$scope.dataLoading = true;
 			

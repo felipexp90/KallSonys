@@ -32,8 +32,8 @@ app.controller("homeController", function($scope, $shop)
 		userData.lc = "EU";
 		userData.rm = 2;
 		//url retorno paypal lado server, envia data post
-		userData.successUrl = "http://localhost/cartAngularServer/return.php";
-		userData.cancelUrl = "http://localhost/cartAngular/#/";
+		userData.successUrl = "http://kallsonys.com/cartAngularServer/return.php";
+		userData.cancelUrl = "http://kallsonys.com/cartAngular/#/";
 		userData.cbt = "Volver a la tienda";
 		userData.formClass = "#formPaypal";
 		return userData;

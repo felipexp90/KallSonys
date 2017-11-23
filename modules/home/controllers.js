@@ -20,8 +20,11 @@ angular.module('Home')
 					$scope.apellidos = response.data[0].apellidos;
 					$scope.telefono = response.data[0].telefono;
 					$scope.correo_e = response.data[0].correo_e;
+					if(response.data[0].datos_tarjeta != undefined){
 					$scope.typeCreditCard = response.data[0].datos_tarjeta.tipo;
-					$scope.creditCard = response.data[0].datos_tarjeta.numero; 
+					$scope.creditCard = response.data[0].datos_tarjeta.numero;	
+					}
+					 
 					$scope.dataLoading = false;
 			}, function errorCallback(response) {
 				$scope.dataLoading = false;
